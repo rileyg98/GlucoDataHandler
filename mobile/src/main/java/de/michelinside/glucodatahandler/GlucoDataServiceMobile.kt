@@ -28,7 +28,7 @@ import de.michelinside.glucodatahandler.widget.LockScreenWallpaper
 import de.michelinside.glucodatahandler.xdripserver.XDripServer
 import androidx.core.content.edit
 import de.michelinside.glucodatahandler.tasker.TaskerWatchBatteryReceiver
-import de.michelinside.glucodatahandler.transfer.TransferValue
+import de.michelinside.glucodatahandler.transfer.TransferService
 
 
 class GlucoDataServiceMobile: GlucoDataService(AppSource.PHONE_APP), NotifierInterface {
@@ -295,8 +295,9 @@ class GlucoDataServiceMobile: GlucoDataService(AppSource.PHONE_APP), NotifierInt
             floatingWidget.create()
             lockScreenWallpaper.create()
             AlarmNotification.initNotifications(this)
-            HealthConnectManager.init(this.applicationContext)
-            XDripServer.init(this.applicationContext)
+            HealthConnectManager.init(applicationContext)
+            XDripServer.init(applicationContext)
+            TransferService.start(applicationContext)
             InternalNotifier.addNotifier(
                 this,
                 TaskerDataReceiver,
@@ -351,6 +352,7 @@ class GlucoDataServiceMobile: GlucoDataService(AppSource.PHONE_APP), NotifierInt
             InternalNotifier.remNotifier(this, this)
             InternalNotifier.remNotifier(this, TaskerDataReceiver)
             InternalNotifier.remNotifier(this, TaskerWatchBatteryReceiver)
+            TransferService.stop(applicationContext)
             PermanentNotification.destroy()
             AlarmNotification.destroy(this)
             CarModeReceiver.cleanup(applicationContext)
@@ -377,11 +379,6 @@ class GlucoDataServiceMobile: GlucoDataService(AppSource.PHONE_APP), NotifierInt
             }
             if (dataSource == NotifySource.DB_DATA_CHANGED && CarModeReceiver.connected) {
                 CarModeReceiver.sendToGlucoDataAuto(context, false, true)
-            }
-            if (extras != null) {
-                if (dataSource == NotifySource.MESSAGECLIENT || dataSource == NotifySource.BROADCAST) {
-                    TransferValue.transferNewValue(context, extras)
-                }
             }
         } catch (exc: Exception) {
             Log.e(LOG_ID, "OnNotifyData exception: " + exc.message.toString() )
