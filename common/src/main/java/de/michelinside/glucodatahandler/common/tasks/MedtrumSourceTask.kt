@@ -40,7 +40,7 @@ class MedtrumSourceTask() : MultiPatientSourceTask(Constants.SHARED_PREF_MEDTRUM
         val patientData: MutableMap<String, String> get() {
             if(instance == null)
                 return mutableMapOf()
-            return instance!!.getPatientData()?: mutableMapOf()
+            return instance!!.patientData
         }
         const val server = "https://easyview.medtrum.%s"
         const val LOGIN_ENDPOINT = "/mobile/ajax/login"
@@ -117,7 +117,7 @@ class MedtrumSourceTask() : MultiPatientSourceTask(Constants.SHARED_PREF_MEDTRUM
         return true
     }
 
-    override fun getPatientData(): MutableMap<String, String>? {
+    override fun getPatients(): MutableMap<String, String>? {
         return handleLoginDataResult(httpGet(getUrl(LOGINDATA_ENDPOINT), getHeader()))
     }
 

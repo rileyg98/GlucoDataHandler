@@ -23,11 +23,11 @@ import javax.net.ssl.X509TrustManager
 
 class HttpRequest {
 
-    private var httpURLConnection: HttpURLConnection? = null
     private var lastResponse: String? = null
     private var lastError: String? = null
     private var lastMessage: String? = null
     private var lastCode: Int = -1
+    private var lastHeaderFields: Map<String, List<String>>? = null
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
     companion object {
@@ -56,33 +56,18 @@ class HttpRequest {
         }
     }
 
-    private fun close() {
-        if (httpURLConnection != null) {
-            Log.v(LOG_ID, "Closing http connection")
-            httpURLConnection!!.disconnect()
-            httpURLConnection = null
-        }
-    }
-
     fun stop() {
-        close()
         reset()
     }
 
-    val connected: Boolean get() = httpURLConnection != null
+    val connected: Boolean get() = false // Deprecated with local connection
     val responseError: String? get() = lastError
     val responseMessage: String? get() = lastMessage
     val response: String? get() = lastResponse
     val code: Int get() = lastCode
 
     fun getHeaderField(name: String): String? {
-        if (httpURLConnection != null) {
-            val header = httpURLConnection!!.getHeaderField(name)
-            if (header != null) {
-                return header
-            }
-        }
-        return null
+        return lastHeaderFields?.get(name)?.firstOrNull()
     }
 
     private fun reset() {
@@ -90,6 +75,7 @@ class HttpRequest {
         lastError= null
         lastMessage = null
         lastCode = -1
+        lastHeaderFields = null
     }
 
     fun get(url: String, header: MutableMap<String, String>? = null, trustAllCertificates: Boolean = false): Int {
@@ -103,58 +89,66 @@ class HttpRequest {
     private fun request(url: String, header: MutableMap<String, String>?, postData: String?, trustAllCertificates: Boolean, postRequest: Boolean): Int = runBlocking {
        scope.async {
             reset()
-            val urlConnection = URL(url).openConnection()
-            if (trustAllCertificates && urlConnection is HttpsURLConnection) {
-                trustAllCertificates(urlConnection)
-            }
+            var conn: HttpURLConnection? = null
+            try {
+                val urlConnection = URL(url).openConnection()
+                if (trustAllCertificates && urlConnection is HttpsURLConnection) {
+                    trustAllCertificates(urlConnection)
+                }
 
-            httpURLConnection = urlConnection as HttpURLConnection
-            if (!header.isNullOrEmpty()) {
-                header.forEach {
-                    if (BuildConfig.DEBUG)
-                        Log.v(LOG_ID, "Add to header: ${it.key} = ${it.value}")
-                    httpURLConnection!!.setRequestProperty(it.key, it.value)
+                conn = urlConnection as HttpURLConnection
+                if (!header.isNullOrEmpty()) {
+                    header.forEach {
+                        if (BuildConfig.DEBUG)
+                            Log.v(LOG_ID, "Add to header: ${it.key} = ${it.value}")
+                        conn.setRequestProperty(it.key, it.value)
+                    }
                 }
-            }
-            httpURLConnection!!.doInput = true
-            httpURLConnection!!.connectTimeout = 10000
-            httpURLConnection!!.readTimeout = 20000
-            if (!postRequest) {
-                Log.i(LOG_ID, "Send GET request to ${httpURLConnection!!.url}")
-                httpURLConnection!!.requestMethod = "GET"
-                httpURLConnection!!.doOutput = false
-            } else {
-                Log.i(LOG_ID, "Send POST request to ${httpURLConnection!!.url}")
-                httpURLConnection!!.requestMethod = "POST"
-                if (postData != null) {
-                    httpURLConnection!!.doOutput = true
-                    val dataOutputStream = DataOutputStream(httpURLConnection!!.outputStream)
-                    val bytes: ByteArray = postData.toByteArray()
-                    Log.v(LOG_ID, "Send data: $postData with size ${bytes.size}")
-                    dataOutputStream.write(bytes, 0, bytes.size)
+                conn.doInput = true
+                conn.connectTimeout = 10000
+                conn.readTimeout = 20000
+                if (!postRequest) {
+                    Log.i(LOG_ID, "Send GET request to ${conn.url}")
+                    conn.requestMethod = "GET"
+                    conn.doOutput = false
                 } else {
-                    httpURLConnection!!.doOutput = false
+                    Log.i(LOG_ID, "Send POST request to ${conn.url}")
+                    conn.requestMethod = "POST"
+                    if (postData != null) {
+                        conn.doOutput = true
+                        DataOutputStream(conn.outputStream).use { os ->
+                            val bytes: ByteArray = postData.toByteArray()
+                            Log.v(LOG_ID, "Send data: $postData with size ${bytes.size}")
+                            os.write(bytes, 0, bytes.size)
+                        }
+                    } else {
+                        conn.doOutput = false
+                    }
                 }
+                handleResponse(conn)
+            } catch (exc: Exception) {
+                Log.e(LOG_ID, "request exception: " + exc.toString())
+                lastError = exc.toString()
+                lastMessage = exc.message
+            } finally {
+                conn?.disconnect()
             }
-            handleResponse()
             lastCode
         }.await()
     }
 
-    private fun handleResponse() {
-        reset()
-        if(httpURLConnection != null) {
-            lastCode = httpURLConnection!!.responseCode
-            lastMessage = httpURLConnection!!.responseMessage
-            Log.i(LOG_ID, "Code $lastCode received with message $lastMessage")
-            if (httpURLConnection!!.responseCode != HttpURLConnection.HTTP_OK) {
-                if (httpURLConnection!!.errorStream != null ) {
-                    lastError = httpURLConnection!!.errorStream.bufferedReader().readText()
-                    Log.e(LOG_ID, "Error received: $lastError")
-                }
-            } else {
-                lastResponse = httpURLConnection!!.inputStream.bufferedReader().readText()
+    private fun handleResponse(conn: HttpURLConnection) {
+        lastCode = conn.responseCode
+        lastMessage = conn.responseMessage
+        lastHeaderFields = conn.headerFields
+        Log.i(LOG_ID, "Code $lastCode received with message $lastMessage")
+        if (conn.responseCode != HttpURLConnection.HTTP_OK) {
+            if (conn.errorStream != null ) {
+                lastError = conn.errorStream.bufferedReader().use { it.readText() }
+                Log.e(LOG_ID, "Error received: $lastError")
             }
+        } else {
+            lastResponse = conn.inputStream.bufferedReader().use { it.readText() }
         }
     }
 

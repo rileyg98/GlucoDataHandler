@@ -16,10 +16,10 @@ import de.michelinside.glucodatahandler.common.R
 abstract class MultiPatientSourceTask(enabledKey: String, source: DataSource) : DataSourceTask(enabledKey, source) {
     protected abstract val LOG_ID: String
     protected abstract val patientIdKey: String
-    private val patientData = mutableMapOf<String, String>()
+    protected val patientData = mutableMapOf<String, String>()
     private var patientId = ""
 
-    protected abstract fun getPatientData(): MutableMap<String, String>?
+    protected abstract fun getPatients(): MutableMap<String, String>?
 
     protected abstract fun getPatientValue(patientId: String): Boolean
 
@@ -37,7 +37,7 @@ abstract class MultiPatientSourceTask(enabledKey: String, source: DataSource) : 
         Log.v(LOG_ID, "getValue called - using patientId: $patientId")
         if(needPatientData()) {
             Log.i(LOG_ID, "Need patient data (current size: ${patientData.size}) - id set: ${patientId.isNotEmpty()} - data contains id: ${patientData.containsKey(patientId)}")
-            if(!handlePatientData(getPatientData()))
+            if(!handlePatientData(getPatients()))
                 return false
         }
         if(patientId.isEmpty() || !patientData.containsKey(patientId)) {
@@ -86,7 +86,7 @@ abstract class MultiPatientSourceTask(enabledKey: String, source: DataSource) : 
 
     private fun setPatientId(id: String) {
         patientId = id
-        Log.i(LOG_ID, "Using patient ${getPatient(patientId)}")
+        Log.i(LOG_ID, "Set new patient ${getPatient(patientId)}")
         GlucoDataService.sharedPref!!.edit {
             putString(patientIdKey, patientId)
         }
@@ -109,6 +109,7 @@ abstract class MultiPatientSourceTask(enabledKey: String, source: DataSource) : 
         var trigger = false
         if (key == null) {
             patientId = sharedPreferences.getString(patientIdKey, "")!!
+            Log.v(LOG_ID, "Using patient id: $patientId")
             //setPatientId("")
             trigger = true
         } else if(key == patientIdKey) {

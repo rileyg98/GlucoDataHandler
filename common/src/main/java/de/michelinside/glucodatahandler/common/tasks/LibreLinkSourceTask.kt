@@ -46,7 +46,7 @@ class LibreLinkSourceTask : MultiPatientSourceTask(Constants.SHARED_PREF_LIBRE_E
         val patientData: MutableMap<String, String> get() {
             if(instance == null)
                 return mutableMapOf<String, String>()
-            return instance!!.getPatientData()?: mutableMapOf()
+            return instance!!.patientData
         }
         var version = "4.17.0"
             private set
@@ -399,7 +399,7 @@ class LibreLinkSourceTask : MultiPatientSourceTask(Constants.SHARED_PREF_LIBRE_E
         return true
     }
 
-    override fun getPatientData(): MutableMap<String, String>? {
+    override fun getPatients(): MutableMap<String, String>? {
         return handleConnectionResponse(httpGet(getUrl(CONNECTION_ENDPOINT), getHeader()))
     }
 
