@@ -652,7 +652,7 @@
     <string name="pref_send_battery_level_to_watch_summary">Invia il livello della batteria all\'orologio per visualizzarlo nella complicazione e nella schermata principale.</string>
     <string name="pref_battery_level">Mostra livello batteria</string>
     <string name="forward_to_watch_interval_summary">Imposta il tempo minimo (in minuti) tra le misurazioni della glicemia prima di inviare un nuovo aggiornamento all\'orologio.\nGli allarmi e le misurazioni molto basse verranno sempre inviati.</string>
-    <string name="forward_to_values_summary">Imposta il tempo minimo (in minuti) tra le misurazioni della glicemia prima di inviare un nuovo aggiornamento ai destinatari (non per Health Connect).</string>
+    <string name="forward_to_values_summary">Imposta il tempo minimo (in minuti) tra le misurazioni della glicemia prima di inviare un nuovo aggiornamento ai destinatari.</string>
     <string name="alarm_repeat_summary">L\'allarme suonerà e vibrerà ripetutamente finché non si chiude la notifica o non viene raggiunta la durata massima impostata per l\'allarme.</string>
     <string name="alarm_repeat_time">Durata massima allarme</string>
     <string name="alarm_repeat_time_summary">Specifica il tempo massimo (in minuti) in cui l\'allarme suonerà e vibrerà. Un valore di 0 significa che l\'allarme si ripeterà indefinitamente.</string>

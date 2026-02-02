@@ -666,7 +666,7 @@
     <string name="pref_send_battery_level_to_watch_summary">Verzend batterijniveau naar horloge om weer te geven in complicatie en op hoofdscherm.</string>
     <string name="pref_battery_level">Batterijniveau weergeven</string>
     <string name="forward_to_watch_interval_summary">Stel de minimale tijd (in minuten) in tussen glucosemetingen voordat een nieuwe update naar het horloge wordt verzonden.\nAlarmen en zeer lage metingen worden altijd verzonden.</string>
-    <string name="forward_to_values_summary">Stel de minimale tijd (in minuten) in tussen glucosemetingen voordat een nieuwe update naar de ontvangers wordt verzonden (niet voor Health Connect).</string>
+    <string name="forward_to_values_summary">Stel de minimale tijd (in minuten) in tussen glucosemetingen voordat een nieuwe update naar de ontvangers wordt verzonden.</string>
     <string name="alarm_repeat_summary">Het alarm zal herhaaldelijk klinken en trillen totdat u de melding sluit of de ingestelde maximale alarmduur is bereikt.</string>
     <string name="alarm_repeat_time">Maximale alarmduur</string>
     <string name="alarm_repeat_time_summary">Geef de maximale tijd (in minuten) op dat het alarm zal klinken en trillen. Een waarde van 0 betekent dat het alarm oneindig zal herhalen.</string>

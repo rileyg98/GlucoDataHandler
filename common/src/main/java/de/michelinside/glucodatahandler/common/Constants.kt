@@ -87,6 +87,7 @@ object Constants {
     const val SHARED_PREF_XDRIP_SERVER_REDUCE_DATA = "xdrip_server_reduce_data"
     const val SHARED_PREF_XDRIP_SERVER_1_MINUTE_INTERVAL = "xdrip_server_1_minute_interval"
     const val SHARED_PREF_SEND_TO_HEALTH_CONNECT = "send_to_health_connect"
+    const val SHARED_PREF_SEND_TO_HEALTH_CONNECT_INTERVAL = "send_to_health_connect_interval"
     const val SHARED_PREF_HEALTH_CONNECT_LAST_VALUE_TIME = "health_connect_last_value_time"
     const val SHARED_PREF_TARGET_MIN = "target_min_value"
     const val SHARED_PREF_TARGET_MAX = "target_max_value"
@@ -189,6 +190,7 @@ object Constants {
     const val SHARED_PREF_SOURCE_NOTIFICATION_ENABLED="source_notification_enabled"
     const val SHARED_PREF_SOURCE_NOTIFICATION_READER_APP="notification_reader_app"
     const val SHARED_PREF_SOURCE_NOTIFICATION_READER_5_MINUTE_INTERVAl="notification_reader_five_minute_interval"
+    const val SHARED_PREF_SOURCE_NOTIFICATION_READER_VALUE_WITH_UNIT="notification_reader_value_with_unit"
     const val SHARED_PREF_SOURCE_NOTIFICATION_READER_APP_REGEX="notification_reader_app_regex"
     const val SHARED_PREF_SOURCE_NOTIFICATION_READER_IOB_APP="notification_reader_iob_app"
     const val SHARED_PREF_SOURCE_NOTIFICATION_READER_IOB_ENABLED="source_notification_iob_enabled"
@@ -208,6 +210,7 @@ object Constants {
     const val SHARED_PREF_LIBRE_USER_ID="source_libre_user_id"
     const val SHARED_PREF_LIBRE_AUTO_ACCEPT_TOU="source_libre_auto_accept_tou"
     const val SHARED_PREF_LIBRE_SERVER="source_libre_server"
+    const val SHARED_PREF_LIBRE_VERSION="source_libre_version"
 
     const val SHARED_PREF_DEXCOM_SHARE_ENABLED="source_dexcom_share_enabled"
     const val SHARED_PREF_DEXCOM_SHARE_USER="source_dexcom_share_user"

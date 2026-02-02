@@ -661,7 +661,7 @@
     <string name="pref_send_battery_level_to_watch_summary">將電池電量傳送到手錶以便在小工具和主畫面上顯示</string>
     <string name="pref_battery_level">顯示電池電量</string>
     <string name="forward_to_watch_interval_summary">設定血糖測量最小間隔多久 (分鐘) 會傳送更新到手錶\n警報和非常低的血糖值會立即傳送</string>
-    <string name="forward_to_values_summary">設定血糖測量最小間隔多久 (分鐘) 會傳送更新到接收程式 (不適用於 Health Connect)</string>
+    <string name="forward_to_values_summary">設定血糖測量最小間隔多久 (分鐘) 會傳送更新到接收程式</string>
     <string name="alarm_repeat_summary">警報會重複發出聲音和震動，直到您關閉通知或達到所設定的最大警報持續時間為止</string>
     <string name="alarm_repeat_time">最大警報持續時間</string>
     <string name="alarm_repeat_time_summary">設定警報發出聲音和震動的最大持續時間 (分鐘)。設為 0 表示警報會一直重複</string>

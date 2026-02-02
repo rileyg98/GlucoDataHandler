@@ -35,6 +35,7 @@
     <string name="garmin_watchfaces" translatable="false">https://apps.garmin.com/search?keywords=xdrip</string>
     <string name="pebble_watchfaces" translatable="false">https://apps.rebble.io/en_US/search/watchfaces/1?native=false&amp;query=xdrip</string>
     <string name="glance_watchfaces" translatable="false">https://glancewatchface.com</string>
+    <string name="medtrum_easy_view_url" translatable="false">https://easyview.medtrum.eu/</string>
 
     <string name="video_tutorial_librelinkup" translatable="false">https://youtu.be/YRs9nY4DgnA?si=v108UhnBNfQSeK2I</string>
     <string name="video_tutorial_juggluco" translatable="false">https://youtu.be/evS5rXDiciY?si=DTxlGYhYm-nNboHl</string>
@@ -727,7 +728,7 @@
     <string name="pref_send_battery_level_to_watch_summary">Send battery level to watch to show in complication and on main screen.</string>
     <string name="pref_battery_level">Show battery level</string>
     <string name="forward_to_watch_interval_summary">Set the minimum time (in minutes) between glucose measurements before sending a new update to the watch.\nAlarms and very low measurements will always be sent.</string>
-    <string name="forward_to_values_summary">Set the minimum time (in minutes) between glucose measurements before sending a new update to the receivers (not for Health Connect).</string>
+    <string name="forward_to_values_summary">Set the minimum time (in minutes) between glucose measurements before sending a new update to the receivers.</string>
     <string name="alarm_repeat_summary">The alarm will sound and vibrate repeatedly until you dismiss the notification or the set max alarm duration is reached.</string>
     <string name="alarm_repeat_time">Max alarm duration</string>
     <string name="alarm_repeat_time_summary">Specify the maximum time (in minutes) the alarm will sound and vibrate. A value of 0 means the alarm will repeat indefinitely.</string>
@@ -1033,11 +1034,20 @@ You can manage these permissions at any time in the Health Connect app settings.
         <item quantity="other">%d hours</item>
     </plurals>
 
+    <!-- v2.3 -->
 
-    <!-- <string name="dexcom_server_down_error">Dexcom server seems to be down!\nPress here to check
-        server status.\nIf the Dexcom app is on the same phone, you can use the Notification Reader
-        instead.
-    </string> -->
+    <string name="medtrum_wrong_user_type_info">Only follower users are allowed account.\nPress here to create a new follower account and invite yourself.</string>
+    <string name="notification_reader_value_with_unit">Value with unit</string>
+    <string name="notification_reader_value_with_unit_summary">If the unit (mmol or mg) is part of the value in notification, enable this to ignore all fields without unit.</string>
+
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="patient_changed">Patient changed</string>
+    <string name="patient_changed_reset_db">You have changed the patient.\nDo you want to reset the database to remove the old patient data?</string>
+    <string name="update">Update</string>
+    <string name="pref_transfer_to_healthconnect_summary">Sharing glucose values with Health Connect.</string>
+    <string name="pref_transfer_to_local_apps_summary">Sending broadcast to other local applications on this device.</string>
+    <string name="transfer_values_interval_summary">Interval sending all glucose values.\nThis includes all values since the last time the values were sent.</string>
 </resources>
 
 
