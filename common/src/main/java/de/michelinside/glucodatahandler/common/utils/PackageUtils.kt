@@ -213,6 +213,7 @@ object PackageUtils {
             receiverFilter.add("com.medtrum.")  // Medtrum
             receiverFilter.add("com.signos.")  // Signos
             receiverFilter.add("com.gluroo.")  // Gluroo
+            receiverFilter.add("com.microtechmd.cgms") // Aidex CGM
         }
         return receiverFilter
     }
