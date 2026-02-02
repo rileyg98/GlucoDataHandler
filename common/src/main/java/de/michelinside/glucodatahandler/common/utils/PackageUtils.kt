@@ -55,7 +55,7 @@ object PackageUtils {
                         val hasMainIntent = packageManager.getLaunchIntentForPackage(pkgName) != null
 
                         // Add to list if it's a user app OR a system app with a launcher (e.g., Chrome, Gallery)
-                        if (!isSystemApp || hasMainIntent) {
+                        if (!isSystemApp || hasMainIntent || receiverFilterContains(pkgName)) {
                             val name = appInfo.loadLabel(packageManager).toString()
                             Log.d(LOG_ID, "Found package: $pkgName - $name")
                             packages[pkgName] = name
@@ -244,7 +244,6 @@ object PackageUtils {
     fun receiverFilterContains(value: String): Boolean {
         return filterContains(getReceiverFilter(), value)
     }
-
 
     fun isDexcomG7App(packageName: String): Boolean {
         return packageName.lowercase().startsWith("com.dexcom.g7")
