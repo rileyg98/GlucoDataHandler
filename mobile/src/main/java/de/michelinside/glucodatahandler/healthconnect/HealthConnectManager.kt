@@ -3,7 +3,6 @@ package de.michelinside.glucodatahandler.healthconnect
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -20,7 +19,6 @@ import androidx.health.connect.client.units.BloodGlucose
 import de.michelinside.glucodatahandler.common.R
 import de.michelinside.glucodatahandler.common.Constants
 import de.michelinside.glucodatahandler.common.GlucoDataService
-import de.michelinside.glucodatahandler.common.ReceiveData
 import de.michelinside.glucodatahandler.common.database.GlucoseValue
 import de.michelinside.glucodatahandler.common.database.dbAccess
 import de.michelinside.glucodatahandler.common.notifier.InternalNotifier
@@ -43,7 +41,7 @@ enum class HealthConnectState(val resId: Int) {
     ERROR(R.string.health_connect_error)
 }
 
-object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface {
+object HealthConnectManager: NotifierInterface {
 
     private const val LOG_ID = "GDH.HealthConnectManager"
     private var healthConnectClient: HealthConnectClient? = null
@@ -56,27 +54,21 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
         private set
 
     val WRITE_GLUCOSE_PERMISSIONS =
-        setOf(HealthPermission.Companion.getWritePermission(BloodGlucoseRecord::class))
+        setOf(HealthPermission.getWritePermission(BloodGlucoseRecord::class))
 
 
     fun init(context: Context) {
-        val sharedPref = context.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE)
         sharedExtraPref = context.getSharedPreferences(Constants.SHARED_PREF_EXTRAS_TAG, Context.MODE_PRIVATE)
-        sharedPref.registerOnSharedPreferenceChangeListener(this)
-        onSharedPreferenceChanged(sharedPref, null)
     }
 
     fun close(context: Context) {
-        val sharedPref = context.getSharedPreferences(Constants.SHARED_PREF_TAG, Context.MODE_PRIVATE)
-        sharedPref.unregisterOnSharedPreferenceChangeListener(this)
+        disable()
     }
 
-    private fun enable() {
+    fun enable() {
         enabled = true
         InternalNotifier.addNotifier( GlucoDataService.context!!, this,
             mutableSetOf(
-                NotifySource.BROADCAST,
-                NotifySource.MESSAGECLIENT,
                 NotifySource.DB_DATA_CHANGED
             )
         )
@@ -84,7 +76,7 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
         writeLastValues(GlucoDataService.context!!)
     }
 
-    private fun disable() {
+    fun disable() {
         enabled = false
         state = HealthConnectState.DISABLED
         InternalNotifier.remNotifier(
@@ -93,13 +85,13 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
     }
 
     fun getPermissionRequestContract(): ActivityResultContract<Set<String>, Set<String>> {
-        return PermissionController.Companion.createRequestPermissionResultContract()
+        return PermissionController.createRequestPermissionResultContract()
     }
 
     private fun getHealthConnectClient(context: Context): HealthConnectClient? {
         if (healthConnectClient == null) {
             try {
-                healthConnectClient = HealthConnectClient.Companion.getOrCreate(context)
+                healthConnectClient = HealthConnectClient.getOrCreate(context)
             } catch (e: Exception) {
                 Log.e(LOG_ID, "Error getting HealthConnectClient: ${e.message}")
             }
@@ -182,7 +174,7 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
         return true
     }
 
-    private fun writeLastValues(context: Context) {
+    fun writeLastValues(context: Context) {
         try {
             val minTime = maxOf(lastValueTime, System.currentTimeMillis() - Constants.DB_MAX_DATA_WEAR_TIME_MS)
             Log.d(LOG_ID, "Write last values from ${Utils.getUiTimeStamp(minTime)}")
@@ -213,7 +205,7 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
                 val deviceInfo = Device(
                     manufacturer = "GlucoDataHandler",
                     model = "App",
-                    type = Device.Companion.TYPE_PHONE
+                    type = Device.TYPE_PHONE
                 )
                 val currentMeta = Metadata.Companion.autoRecorded(device = deviceInfo)
                 val recordsToInsert = mutableListOf<BloodGlucoseRecord>()
@@ -222,7 +214,7 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
                     recordsToInsert.add(BloodGlucoseRecord(
                         time = Instant.ofEpochMilli(it.timestamp),
                         zoneOffset = ZonedDateTime.now().offset,
-                        level = BloodGlucose.Companion.milligramsPerDeciliter(it.value.toDouble()),
+                        level = BloodGlucose.milligramsPerDeciliter(it.value.toDouble()),
                         metadata = currentMeta
                     ))
                 }
@@ -239,6 +231,7 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
                 state = HealthConnectState.ERROR
             }
         }
+        return
     }
 
     /**
@@ -263,20 +256,6 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
         }
     }
 
-    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String?) {
-        try {
-            Log.d(LOG_ID, "onSharedPreferenceChanged - key: $key")
-            if(key == null || key == Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT) {
-                if(sharedPreferences.getBoolean(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT, false))
-                    enable()
-                else
-                    disable()
-            }
-        } catch (exc: Exception) {
-            Log.e(LOG_ID, "onSharedPreferenceChanged exception: " + exc.message.toString())
-        }
-    }
-
     override fun OnNotifyData(context: Context, dataSource: NotifySource, extras: Bundle?) {
         try {
             Log.d(LOG_ID, "OnNotifyData - dataSource: $dataSource - enable: $enabled")
@@ -290,7 +269,7 @@ object HealthConnectManager: OnSharedPreferenceChangeListener, NotifierInterface
                         Log.w(LOG_ID, "Invalid time range: $startTime - $endTime")
                     }
                 } else {
-                    writeGlucoseData(context, listOf(GlucoseValue(ReceiveData.time, ReceiveData.rawValue)))
+                    Log.w(LOG_ID, "Unknown dataSource: $dataSource")
                 }
             }
         } catch (exc: Exception) {

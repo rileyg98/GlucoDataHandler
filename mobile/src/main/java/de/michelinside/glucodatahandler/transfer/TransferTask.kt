@@ -2,7 +2,6 @@ package de.michelinside.glucodatahandler.transfer
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.os.Bundle
 import de.michelinside.glucodatahandler.common.ReceiveData
 import de.michelinside.glucodatahandler.common.utils.Log
 import de.michelinside.glucodatahandler.common.utils.Utils
@@ -34,6 +33,17 @@ abstract class TransferTask {
         }
     }
 
+    protected open fun enable() {}
+    protected open fun disable() {}
+
+    private fun updateEnableState() {
+        Log.d(LOG_ID, "updateEnableState called - enable: $enabled")
+        if(enabled)
+            enable()
+        else
+            disable()
+    }
+
     open fun checkPreferenceChanged(sharedPreferences: SharedPreferences, key: String?): Boolean {
         Log.d(LOG_ID, "checkPreferenceChanged called for key $key")
         if (key == null) {
@@ -44,16 +54,19 @@ abstract class TransferTask {
             else
                 interval = defaultInterval
             Log.i(LOG_ID, "checkPreferenceChanged: enable: $enabled, interval: $interval")
+            updateEnableState()
             return enabled
         }
         if (key == enablePref) {
             enabled = sharedPreferences.getBoolean(enablePref, false)
             Log.i(LOG_ID, "checkPreferenceChanged: enable: $enabled")
+            updateEnableState()
             return enabled
         }
         if (key == intervalPref) {
             interval = sharedPreferences.getInt(intervalPref, defaultInterval)
             Log.i(LOG_ID, "checkPreferenceChanged: interval: $interval")
+            return enabled  // if enabled, re-check execution after interval has changed...
         }
         return false
     }

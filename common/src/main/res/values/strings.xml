@@ -727,7 +727,7 @@
     <string name="pref_send_battery_level_to_watch_summary">Send battery level to watch to show in complication and on main screen.</string>
     <string name="pref_battery_level">Show battery level</string>
     <string name="forward_to_watch_interval_summary">Set the minimum time (in minutes) between glucose measurements before sending a new update to the watch.\nAlarms and very low measurements will always be sent.</string>
-    <string name="forward_to_values_summary">Set the minimum time (in minutes) between glucose measurements before sending a new update to the receivers (not for Health Connect).</string>
+    <string name="forward_to_values_summary">Set the minimum time (in minutes) between glucose measurements before sending a new update to the receivers.</string>
     <string name="alarm_repeat_summary">The alarm will sound and vibrate repeatedly until you dismiss the notification or the set max alarm duration is reached.</string>
     <string name="alarm_repeat_time">Max alarm duration</string>
     <string name="alarm_repeat_time_summary">Specify the maximum time (in minutes) the alarm will sound and vibrate. A value of 0 means the alarm will repeat indefinitely.</string>
@@ -1044,6 +1044,9 @@ You can manage these permissions at any time in the Health Connect app settings.
     <string name="patient_changed">Patient changed</string>
     <string name="patient_changed_reset_db">You have changed the patient.\nDo you want to reset the database to remove the old patient data?</string>
     <string name="update">Update</string>
+    <string name="pref_transfer_to_healthconnect_summary">Sharing glucose values with Health Connect.</string>
+    <string name="pref_transfer_to_local_apps_summary">Sending broadcast to other local applications on this device.</string>
+    <string name="transfer_values_interval_summary">Interval sending all glucose values.\nThis includes all values since the last time the values were sent.</string>
 </resources>
 
 

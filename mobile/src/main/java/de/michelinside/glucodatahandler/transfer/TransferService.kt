@@ -19,10 +19,11 @@ object TransferService: NotifierInterface, SharedPreferences.OnSharedPreferenceC
         try {
             Log.i(LOG_ID, "start called")
             taskList.clear()
+            taskList.add(GlucoDataAuto())
+            taskList.add(HealthConnectTask())
             taskList.add(ToXDripBroadcast())
             taskList.add(XDripBroadcast())
             taskList.add(GlucoDataBroadcast())
-            taskList.add(GlucoDataAuto())
 
             InternalNotifier.addNotifier(
                 context,

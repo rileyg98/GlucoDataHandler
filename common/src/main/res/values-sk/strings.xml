@@ -666,7 +666,7 @@
     <string name="pref_send_battery_level_to_watch_summary">Odoslať úroveň nabitia batérie do hodiniek, aby sa zobrazila v komplikácii a na hlavnej obrazovke.</string>
     <string name="pref_battery_level">Zobraziť úroveň batérie</string>
     <string name="forward_to_watch_interval_summary">Nastavte minimálny čas (v minútach) medzi meraniami glukózy pred odoslaním novej aktualizácie do hodiniek.\nAlarmy a veľmi nízke hodnoty merania sa odosielajú vždy.</string>
-    <string name="forward_to_values_summary">Nastavte minimálny čas (v minútach) medzi meraniami glukózy pred odoslaním novej aktualizácie do prijímačov (nie pre Health Connect).</string>
+    <string name="forward_to_values_summary">Nastavte minimálny čas (v minútach) medzi meraniami glukózy pred odoslaním novej aktualizácie do prijímačov.</string>
     <string name="alarm_repeat_summary">Alarm bude opakovane zvoniť a vibrovať, kým nezrušíte upozornenie alebo nedosiahne nastavenú maximálnu dĺžku trvania alarmu.</string>
     <string name="alarm_repeat_time">Maximálna dĺžka alarmu</string>
     <string name="alarm_repeat_time_summary">Určite maximálny čas (v minútach), počas ktorého bude alarm zvoniť a vibrovať. Hodnota 0 znamená, že alarm sa bude opakovať donekonečna.</string>

@@ -662,7 +662,7 @@
     <string name="pref_send_battery_level_to_watch_summary">Envoyer le niveau de batterie à la montre pour l\'afficher dans la complication et sur l\'écran principal.</string>
     <string name="pref_battery_level">Afficher le niveau de batterie</string>
     <string name="forward_to_watch_interval_summary">Définissez le temps minimum (en minutes) entre les mesures de glucose avant d\'envoyer une nouvelle mise à jour à la montre.\nLes alarmes et les mesures très basses seront toujours envoyées.</string>
-    <string name="forward_to_values_summary">Définissez le temps minimum (en minutes) entre les mesures de glucose avant d\'envoyer une nouvelle mise à jour aux récepteurs (pas pour Health Connect).</string>
+    <string name="forward_to_values_summary">Définissez le temps minimum (en minutes) entre les mesures de glucose avant d\'envoyer une nouvelle mise à jour aux récepteurs.</string>
     <string name="alarm_repeat_summary">L\'alarme sonnera et vibrera de manière répétée jusqu\'à ce que vous rejetiez la notification ou que la durée maximale de l\'alarme définie soit atteinte.</string>
     <string name="alarm_repeat_time">Durée maximale de l\'alarme</string>
     <string name="alarm_repeat_time_summary">Spécifiez la durée maximale (en minutes) pendant laquelle l\'alarme sonnera et vibrera. Une valeur de 0 signifie que l\'alarme se répétera indéfiniment.</string>
