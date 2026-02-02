@@ -74,6 +74,7 @@ object HealthConnectManager: NotifierInterface {
         )
         lastValueTime = sharedExtraPref.getLong(Constants.SHARED_PREF_HEALTH_CONNECT_LAST_VALUE_TIME, 0L)
         writeLastValues(GlucoDataService.context!!)
+        Log.i(LOG_ID, "Health Connect enabled")
     }
 
     fun disable() {
@@ -82,6 +83,7 @@ object HealthConnectManager: NotifierInterface {
         InternalNotifier.remNotifier(
             GlucoDataService.context!!, this
         )
+        Log.i(LOG_ID, "Health Connect disabled")
     }
 
     fun getPermissionRequestContract(): ActivityResultContract<Set<String>, Set<String>> {
@@ -156,6 +158,7 @@ object HealthConnectManager: NotifierInterface {
      * @return True if Health Connect is available and all permissions are granted, false otherwise.
      */
     suspend fun checkAndEnsureRequirements(context: Context, permissionLauncher: ActivityResultLauncher<Set<String>>): Boolean {
+        Log.d(LOG_ID, "checkAndEnsureRequirements called")
         if (Build.VERSION.SDK_INT < 28 && !isHealthConnectAvailable(context)) {
             Log.w(LOG_ID, "Health Connect not supported on API < 28 for checkAndEnsureRequirements.")
             return false
@@ -244,6 +247,7 @@ object HealthConnectManager: NotifierInterface {
             Intent.ACTION_VIEW,
             Uri.parse("market://details?id=com.google.android.apps.healthdata")
         )
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         if (intent.resolveActivity(context.packageManager) != null) {
             context.startActivity(intent)
         } else {
@@ -252,6 +256,7 @@ object HealthConnectManager: NotifierInterface {
                 Intent.ACTION_VIEW,
                 Uri.parse("https://play.google.com/store/apps/details?id=com.google.android.apps.healthdata")
             )
+            webIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(webIntent)
         }
     }

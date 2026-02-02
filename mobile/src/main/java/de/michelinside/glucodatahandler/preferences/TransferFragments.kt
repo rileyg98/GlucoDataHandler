@@ -68,13 +68,14 @@ class TransferHealthConnectFragment: SettingsFragmentBase(R.xml.pref_transfer_he
 
     private fun setupHealthConnect() {
         val pref = findPreference<SwitchPreferenceCompat>(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT)
-        if (Build.VERSION.SDK_INT < 28 && !HealthConnectManager.isHealthConnectAvailable(requireContext().applicationContext)) {
+        if (Build.VERSION.SDK_INT < 28 && !HealthConnectManager.isHealthConnectAvailable(requireContext())) {
             pref?.isVisible = false
         } else {
             requestPermissionLauncher = registerForActivityResult(HealthConnectManager.getPermissionRequestContract()) { grantedPermissions ->
                 if (grantedPermissions.containsAll(HealthConnectManager.WRITE_GLUCOSE_PERMISSIONS)) {
                     Log.i(LOG_ID, "Health Connect permissions granted by user.")
                     // Berechtigungen erteilt, UI aktualisieren oder weitere Aktionen ausführen
+                    HealthConnectManager.writeLastValues(requireContext())
                 } else {
                     Log.w(LOG_ID, "Health Connect permissions were not fully granted.")
                     // Berechtigungen nicht (vollständig) erteilt
@@ -87,16 +88,12 @@ class TransferHealthConnectFragment: SettingsFragmentBase(R.xml.pref_transfer_he
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         if(key == Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT) {
             if(sharedPreferences!!.getBoolean(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT, false)) {
-                lifecycleScope.launch { // Changed from GlobalScope
-                    val isReady = HealthConnectManager.checkAndEnsureRequirements(requireContext().applicationContext, requestPermissionLauncher)
+                lifecycleScope.launch { 
+                    val isReady = HealthConnectManager.checkAndEnsureRequirements(requireContext(), requestPermissionLauncher)
                     if (isReady) {
-                        // Health Connect ist sofort bereit
                         Log.d(LOG_ID, "Health Connect ready to use.")
                     } else {
-                        // Maßnahmen wurden eingeleitet (Play Store / Berechtigungsdialog)
-                        // Die Activity wartet auf das Ergebnis des Launchers oder auf Nutzerinteraktion
                         Log.d(LOG_ID, "Health Connect requirements not met, actions initiated.")
-
                     }
                 }
             }
