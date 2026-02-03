@@ -265,6 +265,22 @@ class GlucoDataServiceMobile: GlucoDataService(AppSource.PHONE_APP), NotifierInt
                     }
                 }
 
+                // Health Connect interval support
+                if(!sharedPrefs.contains(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT_INTERVAL)) {
+                    if(sharedPrefs.contains(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT) && sharedPrefs.getBoolean(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT, false)) {
+                        Log.i(LOG_ID, "Setting default Health Connect interval for active instaces to 1 minute")
+                        sharedPrefs.edit {
+                            putInt(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT_INTERVAL, 1)
+                        }
+                    } else {
+                        // else set interval for force using 5 minutes in the future...
+                        Log.i(LOG_ID, "Setting default Health Connect interval to 5 minutes")
+                        sharedPrefs.edit {
+                            putInt(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT_INTERVAL, 5)
+                        }
+                    }
+                }
+
             } catch (exc: Exception) {
                 Log.e(LOG_ID, "migrateSettings exception: " + exc.message.toString() )
             }

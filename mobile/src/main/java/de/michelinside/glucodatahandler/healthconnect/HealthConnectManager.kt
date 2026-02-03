@@ -48,7 +48,13 @@ object HealthConnectManager: NotifierInterface {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private lateinit var sharedExtraPref: SharedPreferences
     var state = HealthConnectState.UNKNOWN
-        private set
+        private set(value) {
+            if (field != value) {
+                Log.i(LOG_ID, "Health Connect state changed from $field to $value")
+                field = value
+                InternalNotifier.notify(GlucoDataService.context!!, NotifySource.UPDATE_MAIN, null)
+            }
+        }
     private var lastValueTime: Long = 0
     var enabled = false
         private set
@@ -123,7 +129,7 @@ object HealthConnectManager: NotifierInterface {
      * @return True if all permissions are granted, false otherwise.
      */
     private suspend fun hasAllPermissions(context: Context): Boolean {
-        if (Build.VERSION.SDK_INT < 28 && !isHealthConnectAvailable(context)) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P && !isHealthConnectAvailable(context)) {
             return false
         }
         return try {
@@ -142,7 +148,7 @@ object HealthConnectManager: NotifierInterface {
      */
     private fun requestPermissions(launcher: ActivityResultLauncher<Set<String>>) {
         try {
-            if (Build.VERSION.SDK_INT >= 28) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 launcher.launch(WRITE_GLUCOSE_PERMISSIONS)
             }
         } catch (exc: Exception) {
@@ -159,18 +165,37 @@ object HealthConnectManager: NotifierInterface {
      */
     suspend fun checkAndEnsureRequirements(context: Context, permissionLauncher: ActivityResultLauncher<Set<String>>): Boolean {
         Log.d(LOG_ID, "checkAndEnsureRequirements called")
-        if (Build.VERSION.SDK_INT < 28 && !isHealthConnectAvailable(context)) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P && !isHealthConnectAvailable(context)) {
             Log.w(LOG_ID, "Health Connect not supported on API < 28 for checkAndEnsureRequirements.")
             return false
         }
         if (!isHealthConnectAvailable(context)) {
             Log.i(LOG_ID, "Health Connect not available. Opening settings...")
-            openHealthConnectSettings(context)
+            openHealthConnectPlaystore(context)
             return false
         }
         if (!hasAllPermissions(context)) {
             Log.i(LOG_ID, "Health Connect permissions not granted. Requesting permissions...")
             requestPermissions(permissionLauncher)
+            return false
+        }
+        Log.i(LOG_ID, "Health Connect is available and all permissions are granted.")
+        return true
+    }
+
+    // check only without doing any action
+    suspend fun checkRequirements(context: Context): Boolean {
+        Log.d(LOG_ID, "checkAndEnsureRequirements called")
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P && !isHealthConnectAvailable(context)) {
+            Log.w(LOG_ID, "Health Connect not supported on API < 28 for checkAndEnsureRequirements.")
+            return false
+        }
+        if (!isHealthConnectAvailable(context)) {
+            Log.i(LOG_ID, "Health Connect not available.")
+            return false
+        }
+        if (!hasAllPermissions(context)) {
+            Log.i(LOG_ID, "Health Connect permissions not granted.")
             return false
         }
         Log.i(LOG_ID, "Health Connect is available and all permissions are granted.")
@@ -188,7 +213,7 @@ object HealthConnectManager: NotifierInterface {
     }
 
     private fun writeGlucoseData(context: Context, glucoseValues: List<GlucoseValue>) {
-        if(!enabled || glucoseValues.isEmpty())
+        if(!enabled)
             return
         val client = getHealthConnectClient(context)
         if (client == null) {
@@ -203,30 +228,31 @@ object HealthConnectManager: NotifierInterface {
                     state = HealthConnectState.NO_PERMISSION
                     return@launch
                 }
-                // Using Metadata.autoRecorded() based on the web example for StepsRecord
-                // Device.TYPE_PHONE (1) is used as it's running on a phone.
-                val deviceInfo = Device(
-                    manufacturer = "GlucoDataHandler",
-                    model = "App",
-                    type = Device.TYPE_PHONE
-                )
-                val currentMeta = Metadata.Companion.autoRecorded(device = deviceInfo)
-                val recordsToInsert = mutableListOf<BloodGlucoseRecord>()
+                if(glucoseValues.isNotEmpty()) {
+                    // Using Metadata.autoRecorded() based on the web example for StepsRecord
+                    // Device.TYPE_PHONE (1) is used as it's running on a phone.
+                    val deviceInfo = Device(
+                        manufacturer = "GlucoDataHandler",
+                        model = "App",
+                        type = Device.TYPE_PHONE
+                    )
+                    val currentMeta = Metadata.Companion.autoRecorded(device = deviceInfo)
+                    val recordsToInsert = mutableListOf<BloodGlucoseRecord>()
 
-                glucoseValues.forEach {
-                    recordsToInsert.add(BloodGlucoseRecord(
-                        time = Instant.ofEpochMilli(it.timestamp),
-                        zoneOffset = ZonedDateTime.now().offset,
-                        level = BloodGlucose.milligramsPerDeciliter(it.value.toDouble()),
-                        metadata = currentMeta
-                    ))
-                }
+                    glucoseValues.forEach {
+                        recordsToInsert.add(BloodGlucoseRecord(
+                            time = Instant.ofEpochMilli(it.timestamp),
+                            zoneOffset = ZonedDateTime.now().offset,
+                            level = BloodGlucose.milligramsPerDeciliter(it.value.toDouble()),
+                            metadata = currentMeta
+                        ))
+                    }
 
-                client.insertRecords(recordsToInsert)
-                Log.i(LOG_ID, "Successfully wrote ${recordsToInsert.size} glucose data to Health Connect")
-                with(sharedExtraPref.edit()) {
-                    putLong(Constants.SHARED_PREF_HEALTH_CONNECT_LAST_VALUE_TIME, glucoseValues.last().timestamp)
-                    apply()
+                    client.insertRecords(recordsToInsert)
+                    Log.i(LOG_ID, "Successfully wrote ${recordsToInsert.size} glucose data to Health Connect")
+                    updateLastValueTime(glucoseValues.last().timestamp)
+                } else {
+                    Log.d(LOG_ID, "No glucose data to write to Health Connect")
                 }
                 state = HealthConnectState.CONNECTED
             } catch (e: Exception) {
@@ -237,12 +263,23 @@ object HealthConnectManager: NotifierInterface {
         return
     }
 
+    private fun updateLastValueTime(time: Long) {
+        if(time > lastValueTime) {
+            Log.i(LOG_ID, "Updating last value time to ${Utils.getUiTimeStamp(time)}")
+            lastValueTime = time
+            with(sharedExtraPref.edit()) {
+                putLong(Constants.SHARED_PREF_HEALTH_CONNECT_LAST_VALUE_TIME, lastValueTime)
+                apply()
+            }
+        }
+    }
+
     /**
      * Opens the Health Connect app settings in the Google Play Store.
      * This is useful for guiding the user to grant permissions or install Health Connect.
      * @param context The application context.
      */
-    private fun openHealthConnectSettings(context: Context) {
+    private fun openHealthConnectPlaystore(context: Context) {
         val intent = Intent(
             Intent.ACTION_VIEW,
             Uri.parse("market://details?id=com.google.android.apps.healthdata")
@@ -258,6 +295,21 @@ object HealthConnectManager: NotifierInterface {
             )
             webIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.startActivity(webIntent)
+        }
+    }
+
+    fun openHealthConnectSettings(context: Context) {
+        try {
+            val sdkStatus = HealthConnectClient.getSdkStatus(context)
+            if (sdkStatus == HealthConnectClient.SDK_AVAILABLE) {
+                val intent = Intent(HealthConnectClient.ACTION_HEALTH_CONNECT_SETTINGS)
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
+            } else {
+                openHealthConnectPlaystore(context)
+            }
+        } catch (e: Exception) {
+            Log.e(LOG_ID, "Error opening Health Connect settings: ${e.message}")
         }
     }
 

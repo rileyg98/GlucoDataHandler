@@ -1046,7 +1046,10 @@ You can manage these permissions at any time in the Health Connect app settings.
     <string name="update">Update</string>
     <string name="pref_transfer_to_healthconnect_summary">Sharing glucose values with Health Connect.</string>
     <string name="pref_transfer_to_local_apps_summary">Sending broadcast to other local applications on this device.</string>
-    <string name="transfer_values_interval_summary">Interval sending all glucose values.\nThis includes all values since the last time the values were sent.</string>
+    <string name="transfer_values_interval_summary">Interval for sending glucose values.\nAll values recorded since the last transmission will be included.</string>
+    <string name="health_connect_settings">Open Health Connect</string>
+    <string name="health_connect_settings_summary">Manage permissions and data access for Health Connect.</string>
+    <string name="health_connect_not_supported_version">Health Connect requires at least Android 9.</string>
 </resources>
 
 

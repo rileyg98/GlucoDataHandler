@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.preference.Preference
 import androidx.preference.SwitchPreferenceCompat
 import de.michelinside.glucodatahandler.R
+import de.michelinside.glucodatahandler.common.R as CR
 import de.michelinside.glucodatahandler.common.Constants
 import de.michelinside.glucodatahandler.common.Intents
 import de.michelinside.glucodatahandler.common.utils.Log
@@ -31,8 +32,14 @@ class TransferSettingsFragment: SettingsFragmentBase(R.xml.pref_transfer) {
                 return
             val prefHealthConnect = findPreference<Preference>("transfer_healthconnect")
             if(prefHealthConnect != null ) {
-                val enabled = preferenceManager.sharedPreferences!!.getBoolean(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT, false)
-                setEnableState(prefHealthConnect, enabled)
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P && !HealthConnectManager.isHealthConnectAvailable(requireContext())) {
+                    prefHealthConnect.isEnabled = false
+                    prefHealthConnect.summary = resources.getString(CR.string.health_connect_not_supported_version)
+                    setEnableState(prefHealthConnect, false)
+                } else {
+                    val enabled = preferenceManager.sharedPreferences!!.getBoolean(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT, false)
+                    setEnableState(prefHealthConnect, enabled)
+                }
             }
             val prefLocalApps = findPreference<Preference>("transfer_localapps")
             if(prefLocalApps != null ) {
@@ -49,9 +56,9 @@ class TransferSettingsFragment: SettingsFragmentBase(R.xml.pref_transfer) {
     private fun setEnableState(pref: Preference, enable: Boolean) {
         Log.d(LOG_ID, "setEnableState called for ${pref.key}: $enable")
         if(enable) {
-            pref.icon = ContextCompat.getDrawable(requireContext(), de.michelinside.glucodatahandler.common.R.drawable.switch_on)
+            pref.icon = ContextCompat.getDrawable(requireContext(), CR.drawable.switch_on)
         } else {
-            pref.icon = ContextCompat.getDrawable(requireContext(), de.michelinside.glucodatahandler.common.R.drawable.switch_off)
+            pref.icon = ContextCompat.getDrawable(requireContext(), CR.drawable.switch_off)
         }
     }
 
@@ -59,6 +66,9 @@ class TransferSettingsFragment: SettingsFragmentBase(R.xml.pref_transfer) {
 
 class TransferHealthConnectFragment: SettingsFragmentBase(R.xml.pref_transfer_healthconnect) {
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<Set<String>>
+    private var requestStartTime: Long = 0 // Track when the request started
+    private var mustCheckPermission = false
+    private var openHealthSettings = false
 
     override fun initPreferences() {
         Log.v(LOG_ID, "initPreferences called")
@@ -67,19 +77,61 @@ class TransferHealthConnectFragment: SettingsFragmentBase(R.xml.pref_transfer_he
     }
 
     private fun setupHealthConnect() {
+        mustCheckPermission = false
+        openHealthSettings = false
         val pref = findPreference<SwitchPreferenceCompat>(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT)
-        if (Build.VERSION.SDK_INT < 28 && !HealthConnectManager.isHealthConnectAvailable(requireContext())) {
-            pref?.isVisible = false
-        } else {
-            requestPermissionLauncher = registerForActivityResult(HealthConnectManager.getPermissionRequestContract()) { grantedPermissions ->
-                if (grantedPermissions.containsAll(HealthConnectManager.WRITE_GLUCOSE_PERMISSIONS)) {
-                    Log.i(LOG_ID, "Health Connect permissions granted by user.")
-                    // Berechtigungen erteilt, UI aktualisieren oder weitere Aktionen ausführen
-                    HealthConnectManager.writeLastValues(requireContext())
+        requestPermissionLauncher = registerForActivityResult(HealthConnectManager.getPermissionRequestContract()) { grantedPermissions ->
+            if (grantedPermissions.containsAll(HealthConnectManager.WRITE_GLUCOSE_PERMISSIONS)) {
+                Log.i(LOG_ID, "Health Connect permissions granted by user.")
+                // Berechtigungen erteilt, UI aktualisieren oder weitere Aktionen ausführen
+                HealthConnectManager.writeLastValues(requireContext())
+            } else {
+                val duration = System.currentTimeMillis() - requestStartTime
+                Log.w(LOG_ID, "Health Connect permissions were not fully granted. Duration: $duration ms")
+                // If duration is very short, the system likely suppressed the dialog
+                if (duration < 1000) {
+                    Log.i(LOG_ID, "Permission dialog suppressed, opening settings.")
+                    HealthConnectManager.openHealthConnectSettings(requireContext())
+                    openHealthSettings = true
                 } else {
-                    Log.w(LOG_ID, "Health Connect permissions were not fully granted.")
-                    // Berechtigungen nicht (vollständig) erteilt
                     pref?.isChecked = false
+                }
+            }
+        }
+        val prefOpenHealthConnect = findPreference<Preference>("health_connect_settings")
+        if(prefOpenHealthConnect != null) {
+            prefOpenHealthConnect.setOnPreferenceClickListener {
+                HealthConnectManager.openHealthConnectSettings(requireContext())
+                true
+            }
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if(openHealthSettings) {
+            mustCheckPermission = true
+            openHealthSettings = false
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(mustCheckPermission)
+            checkPermissions()
+    }
+
+    private fun checkPermissions() {
+        val pref = findPreference<SwitchPreferenceCompat>(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT)
+        // Check permissions only if the user actually wants to use Health Connect
+        if (pref?.isChecked == true) {
+            lifecycleScope.launch {
+                val granted = HealthConnectManager.checkRequirements(requireContext())
+                if (!granted) {
+                    Log.w(LOG_ID, "Permissions lost while in background, disabling switch.")
+                    pref.isChecked = false
+                } else {
+                    HealthConnectManager.writeLastValues(requireContext())
                 }
             }
         }
@@ -87,8 +139,11 @@ class TransferHealthConnectFragment: SettingsFragmentBase(R.xml.pref_transfer_he
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
         if(key == Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT) {
+            mustCheckPermission = false
+            openHealthSettings = false
             if(sharedPreferences!!.getBoolean(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT, false)) {
-                lifecycleScope.launch { 
+                lifecycleScope.launch {
+                    requestStartTime = System.currentTimeMillis()  // set start time to check, if the dialog was not opened...
                     val isReady = HealthConnectManager.checkAndEnsureRequirements(requireContext(), requestPermissionLauncher)
                     if (isReady) {
                         Log.d(LOG_ID, "Health Connect ready to use.")

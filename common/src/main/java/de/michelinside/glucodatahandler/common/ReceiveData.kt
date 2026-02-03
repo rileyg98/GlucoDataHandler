@@ -614,6 +614,11 @@ object ReceiveData: SharedPreferences.OnSharedPreferenceChangeListener {
                             " - difference: " + (newTime-time)
                 )
 
+                if(newTime == 0L) {
+                    Log.w(LOG_ID, "Invalid timestamp received! " + Utils.dumpBundle(extras))
+                    return false
+                }
+
                 if (!GlucoDataUtils.isGlucoseValid(extras.getInt(MGDL))) {
                     Log.w(LOG_ID, "Invalid glucose values received! " + extras.toString())
                     SourceStateData.setError(dataSource, context.resources.getString(R.string.invalid_glucose_value, extras.getInt(MGDL).toString()))
@@ -998,6 +1003,11 @@ object ReceiveData: SharedPreferences.OnSharedPreferenceChangeListener {
                 val sharedGlucosePref = context.getSharedPreferences(Constants.GLUCODATA_BROADCAST_ACTION, Context.MODE_PRIVATE)
                 if (sharedGlucosePref.contains(TIME)) {
                     Log.i(LOG_ID, "Reading saved values...")
+                    val newTime = sharedGlucosePref.getLong(TIME, 0L)
+                    if(newTime == 0L) {
+                        Log.i(LOG_ID, "Ignoring saved values as no time is set!")
+                        return
+                    }
                     val extras = Bundle()
                     extras.putLong(TIME, sharedGlucosePref.getLong(TIME, time))
                     extras.putFloat(GLUCOSECUSTOM, sharedGlucosePref.getFloat(GLUCOSECUSTOM, glucose))
