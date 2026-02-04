@@ -903,7 +903,7 @@ Tieto povolenia môžete kedykoľvek spravovať v nastaveniach aplikácie Health
     <string name="pref_switch_xdrip_server_reduce_data_summary">Tým sa zníži množstvo poskytovaných údajov na minimum, aby sa predišlo problémom s pamäťou na niektorých hodinkách Garmin.\nSkontrolujte prosím kompatibilitu s ciferníkom vašich hodiniek.</string>
     <string name="error_port_in_use">Port sa používa!\nZastavte ostatné webové servery bežiace na tomto porte a reštartujte lokálny webový server.</string>
     <string name="state_active">aktívny</string>
-    <string name="pref_garmin_info_summary">Pre Garmin alebo Pebble neexistuje žiadna špeciálna aplikácia, len lokálny webový server, ktorý sa používa pre ciferníky s podporou xDrip+.\nStačí vyhľadať takéto ciferníky v obchode Connect IQ Store a nastaviť zdroj xDrip+ pre tieto ciferníky.\nDÔLEŽITÉ: ak používate aj xDrip+ alebo Juggluco, lokálny webový server môžete aktivovať len v jednej aplikácii, pretože používajú rovnaký port (17580)!</string>
+    <string name="pref_garmin_info_summary">Pre Garmin alebo Fitbit neexistuje žiadna špeciálna aplikácia, len lokálny webový server, ktorý sa používa pre ciferníky s podporou xDrip+.\nStačí vyhľadať takéto ciferníky v obchode Connect IQ Store a nastaviť zdroj xDrip+ pre tieto ciferníky.\nDÔLEŽITÉ: ak používate aj xDrip+ alebo Juggluco, lokálny webový server môžete aktivovať len v jednej aplikácii, pretože používajú rovnaký port (17580)!</string>
     <string name="remaining">Zostáva</string>
     <string name="pref_switch_xdrip_open_server">Otvoriť webový server</string>
     <string name="pref_switch_xdrip_open_server_summary">Sprístupniť webový server pre ostatné zariadenia v sieti.\nMôže to spôsobiť bezpečnostné problémy, preto túto možnosť povoľte, len ak naozaj potrebujete pristupovať k údajom webového servera zo siete.\nCiferníky Garmin si vyžadujú údaje priamo v telefóne, takže otvorený server nie je potrebný!</string>
@@ -932,14 +932,12 @@ Tieto povolenia môžete kedykoľvek spravovať v nastaveniach aplikácie Health
     <string name="src_ns_summary">Vzdialene sledovať webovú službu Nightscout.</string>
     <string name="pref_cat_wear_os_summary">Pre hodinky s Wear OS, napr. všetky hodinky Google Pixel, hodinky Samsung Galaxy Watch 4 a novšie a mnohé ďalšie.</string>
     <string name="pref_cat_watchdrip_summary">Pre hodinky podporované externou aplikáciou WatchDrip+, ako napríklad väčšina modelov Mi Band, Xiaomi Smart Band a Amazfit.</string>
-    <string name="pref_cat_garminpebble">Hodinky Garmin, Fitbit a Pebble</string>
-    <string name="pref_cat_garminpebble_summary">Pre zariadenia a aplikácie, ktoré môžu prijímať údaje o glykémii z webovej služby xDrip+, ako sú hodinky Garmin, Pebble a niektoré hodinky Fitbit.</string>
+    <string name="pref_cat_garminpebble">Hodinky Garmin a Fitbit</string>
+    <string name="pref_cat_garminpebble_summary">Pre zariadenia a aplikácie, ktoré môžu prijímať údaje o glykémii z webovej služby xDrip+, ako sú hodinky Garmin a niektoré hodinky Fitbit.</string>
     <string name="pref_garmin_watchfaces_summary">Stlačte tu pre otvorenie obchodu Connect IQ pre ciferníky xDrip+.\nAk ciferníky podporujú xDrip+, mali by byť kompatibilné aj s touto aplikáciou.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Stlačte tu pre otvorenie webovej stránky Glance, ktorá podporuje webové služby xDrip+.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Stlačte tu pre otvorenie ciferníkov Pebble navrhnutých pre xDrip+, ktoré by mali byť tiež kompatibilné s touto aplikáciou.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Horizontálna poloha</string>
     <string name="pref_lockscreen_x_pos_summary">Horizontálna poloha obrázka:\n0 je ľavá strana displeja\n40 je pravá strana displeja</string>

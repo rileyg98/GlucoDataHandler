@@ -907,7 +907,7 @@ U kunt deze toestemmingen op elk moment beheren in de instellingen van de Health
     <string name="pref_switch_xdrip_server_reduce_data_summary">Dit reduceert de verstrekte gegevens tot een minimum om geheugenproblemen op sommige Garmin-horloges te voorkomen.\nControleer de compatibiliteit met uw watchface.</string>
     <string name="error_port_in_use">Poort is in gebruik!\nStop andere webservers die op deze poort draaien en herstart de lokale webserver opnieuw.</string>
     <string name="state_active">actief</string>
-    <string name="pref_garmin_info_summary">Er is geen speciale app voor Garmin, Fitbit of Pebble, alleen een lokale webserver die wordt gebruikt door watchfaces met xDrip+-ondersteuning.\nZoek gewoon naar dergelijke watchfaces in de Connect IQ Store en stel de xDrip+-bron in voor deze watchfaces.\nBELANGRIJK: als u ook xDrip+ of Juggluco gebruikt, kunt u de lokale webserver slechts in één app inschakelen, omdat ze dezelfde poort (17580) gebruiken!</string>
+    <string name="pref_garmin_info_summary">Er is geen speciale app voor Garmin of Fitbit, alleen een lokale webserver die wordt gebruikt door watchfaces met xDrip+-ondersteuning.\nZoek gewoon naar dergelijke watchfaces in de Connect IQ Store en stel de xDrip+-bron in voor deze watchfaces.\nBELANGRIJK: als u ook xDrip+ of Juggluco gebruikt, kunt u de lokale webserver slechts in één app inschakelen, omdat ze dezelfde poort (17580) gebruiken!</string>
     <string name="remaining">Resterend</string>
     <string name="pref_switch_xdrip_open_server">Open webserver</string>
     <string name="pref_switch_xdrip_open_server_summary">Maak de webserver open voor andere apparaten in het netwerk.\nDit kan beveiligingsproblemen veroorzaken, dus schakel dit alleen in als u echt toegang nodig heeft tot de gegevens van de webserver vanuit het netwerk.\nDe Garmin-watchfaces vragen gegevens rechtstreeks op de telefoon op, dus er is geen open server nodig!</string>
@@ -936,14 +936,12 @@ U kunt deze toestemmingen op elk moment beheren in de instellingen van de Health
     <string name="src_ns_summary">Volg de Nightscout-webservice op afstand.</string>
     <string name="pref_cat_wear_os_summary">Voor Wear OS-horloges, bijv. alle Google Pixel Watches, Samsung Galaxy Watch 4 en nieuwer, en vele anderen.</string>
     <string name="pref_cat_watchdrip_summary">Voor horloges die worden ondersteund door de externe WatchDrip+-app, zoals de meeste Mi Band, Xiaomi Smart Band- en Amazfit-modellen.</string>
-    <string name="pref_cat_garminpebble">Zegarki Garmin, Fitbit i Pebble</string>
-    <string name="pref_cat_garminpebble_summary">Voor apparaten en apps die glucosegegevens kunnen ontvangen van de xDrip+-webservice, zoals Garmin, Pebble en sommige Fitbit-horloges.</string>
+    <string name="pref_cat_garminpebble">Zegarki Garmin i Fitbit</string>
+    <string name="pref_cat_garminpebble_summary">Voor apparaten en apps die glucosegegevens kunnen ontvangen van de xDrip+-webservice, zoals Garmin en sommige Fitbit-horloges.</string>
     <string name="pref_garmin_watchfaces_summary">Druk hier om de Connect IQ-store te openen voor xDrip+-watchfaces.\nAls de watchfaces xDrip+ ondersteunen, moeten ze ook compatibel zijn met deze app.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Druk hier om de Glance-webpagina te openen, die xDrip+-webservices ondersteunt.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Druk hier om Pebble-watchfaces te openen die zijn ontworpen voor xDrip+, die ook compatibel moeten zijn met deze app.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Horizontale positie</string>
     <string name="pref_lockscreen_x_pos_summary">Horizontale positie van de afbeelding:\n0 is de linkerkant van het scherm\n40 is de rechterkant van het scherm</string>

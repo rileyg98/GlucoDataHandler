@@ -904,7 +904,7 @@ Puedes gestionar estos permisos en cualquier momento en la configuración de la 
     <string name="pref_switch_xdrip_server_reduce_data_summary">Esto reducirá los datos proporcionados a un mínimo para prevenir problemas de memoria en algunos relojes Garmin.\nPor favor, comprueba la compatibilidad con tu esfera de reloj.</string>
     <string name="error_port_in_use">¡El puerto está en uso!\nPor favor, detén otros servidores web que se ejecuten en este puerto y reinicia el servidor web local de nuevo.</string>
     <string name="state_active">activo</string>
-    <string name="pref_garmin_info_summary">No hay una aplicación dedicada para Garmin, Fitbit o Pebble, solo un servidor web local que es utilizado por esferas de reloj con soporte para xDrip+.\nBusca estas esferas en la Connect IQ Store y configura la fuente de xDrip+ para ellas.\nIMPORTANTE: si también usas xDrip+ o Juggluco, solo puedes habilitar el servidor web local en una aplicación, ya que usan el mismo puerto (17580).</string>
+    <string name="pref_garmin_info_summary">No hay una aplicación dedicada para Garmin o Fitbit, solo un servidor web local que es utilizado por esferas de reloj con soporte para xDrip+.\nBusca estas esferas en la Connect IQ Store y configura la fuente de xDrip+ para ellas.\nIMPORTANTE: si también usas xDrip+ o Juggluco, solo puedes habilitar el servidor web local en una aplicación, ya que usan el mismo puerto (17580).</string>
     <string name="remaining">Restante</string>
     <string name="pref_switch_xdrip_open_server">Abrir servidor web</string>
     <string name="pref_switch_xdrip_open_server_summary">Hace que el servidor web esté abierto para otros dispositivos en la red.\nEsto puede causar problemas de seguridad, así que solo habilítalo si realmente necesitas acceder a los datos del servidor web desde la red.\nLas esferas de reloj de Garmin solicitan los datos directamente en el teléfono, por lo que no se necesita un servidor abierto.</string>
@@ -933,14 +933,12 @@ Puedes gestionar estos permisos en cualquier momento en la configuración de la 
     <string name="src_ns_summary">Sigue de forma remota el servicio web de Nightscout.</string>
     <string name="pref_cat_wear_os_summary">Para relojes Wear OS, por ejemplo, todos los Google Pixel Watches, Samsung Galaxy Watch 4 y posteriores, y muchos otros.</string>
     <string name="pref_cat_watchdrip_summary">Para relojes compatibles con la aplicación externa WatchDrip+, como la mayoría de los modelos de Mi Band, Xiaomi Smart Band y Amazfit.</string>
-    <string name="pref_cat_garminpebble">Relojes Garmin, Fitbit y Pebble</string>
-    <string name="pref_cat_garminpebble_summary">Para dispositivos y aplicaciones que pueden recibir datos de glucosa del servicio web de xDrip+, como Garmin, Pebble y algunos relojes Fitbit.</string>
+    <string name="pref_cat_garminpebble">Relojes Garmin y Fitbit</string>
+    <string name="pref_cat_garminpebble_summary">Para dispositivos y aplicaciones que pueden recibir datos de glucosa del servicio web de xDrip+, como Garmin y algunos relojes Fitbit.</string>
     <string name="pref_garmin_watchfaces_summary">Pulsa aquí para abrir la tienda Connect IQ y ver las esferas de reloj de xDrip+.\nSi las esferas son compatibles con xDrip+, también deberían serlo con esta aplicación.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Pulsa aquí para abrir la página web de Glance, que es compatible con los servicios web de xDrip+.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Pulsa aquí para abrir las esferas de reloj de Pebble diseñadas para xDrip+, que también deberían ser compatibles con esta aplicación.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Posición horizontal</string>
     <string name="pref_lockscreen_x_pos_summary">Posición horizontal de la imagen:\n0 es la izquierda de la pantalla\n40 es la derecha de la pantalla</string>

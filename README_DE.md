@@ -41,7 +41,7 @@ Diese innovative App empfängt Daten von zahlreichen Quellen und visualisiert si
     * **WICHTIGER HINWEIS:** GDH ist keine Standalone-Wear OS App. Für die Einrichtung ist die Telefon-App erforderlich.
 
 * **WatchDrip+ Unterstützung:** Nutze GDH mit bestimmten Mi Band-, Xiaomi Smart Band und Amazfit-Uhren.
-* **Garmin, Fitbit und Pebble** Unterstützung (interner Webserver im xDrip+ Format)
+* **Garmin und Fitbit** Unterstützung (interner Webserver im xDrip+ Format)
 * **Health Connect** Unterstützung
 
 * **Barrierefreiheit:** Volle TalkBack-Unterstützung (Dank an Alex für die Tests!).

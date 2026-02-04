@@ -900,7 +900,7 @@
     <string name="pref_switch_xdrip_server_reduce_data_summary">Spowoduje to ograniczenie dostarczanych danych do minimum, aby zapobiec problemom z pamięcią w niektórych zegarkach Garmin.\nNależy sprawdzić kompatybilność ze swoją tarczą zegarka.</string>
     <string name="error_port_in_use">Port jest używany!\nNależy zatrzymać inny serwer sieciowy działający na tym porcie i ponowne uruchomić lokalny serwer sieciowy.</string>
     <string name="state_active">aktywny</string>
-    <string name="pref_garmin_info_summary">Nie ma dedykowanej aplikacji dla Garmin, Fitbit lub Pebble, tylko lokalny serwer sieciowy, który jest używany przez tarcze zegarków obsługujące przesył danych z xDrip+.\nWystarczy wyszukać takie tarcze w Connect IQ Store i skonfigurować źródło xDrip+ dla tych tarczy.\nWAŻNE: jeśli używasz również xDrip+ lub Juggluco, możesz włączyć lokalny serwer sieciowy tylko w jednej aplikacji, ponieważ używają one tego samego portu (17580)!</string>
+    <string name="pref_garmin_info_summary">Nie ma dedykowanej aplikacji dla Garmin lub Fitbit, tylko lokalny serwer sieciowy, który jest używany przez tarcze zegarków obsługujące przesył danych z xDrip+.\nWystarczy wyszukać takie tarcze w Connect IQ Store i skonfigurować źródło xDrip+ dla tych tarczy.\nWAŻNE: jeśli używasz również xDrip+ lub Juggluco, możesz włączyć lokalny serwer sieciowy tylko w jednej aplikacji, ponieważ używają one tego samego portu (17580)!</string>
     <string name="remaining">Pozostało</string>
     <string name="pref_switch_xdrip_open_server">Otwórz serwer sieciowy</string>
     <string name="pref_switch_xdrip_open_server_summary">Otwórz serwer internetowy dla innych urządzeń w sieci.\nMoże to spowodować problemy z bezpieczeństwem, więc włącz tę funkcję tylko wtedy, gdy naprawdę potrzebujesz dostępu do danych serwera z sieci.\nTarcze zegarków Garmin żądają danych bezpośrednio w telefonie, więc nie jest potrzebny otwarty serwer!</string>
@@ -929,13 +929,11 @@
     <string name="src_ns_summary">Zdalne śledzenie usługi internetowej Nightscout.</string>
     <string name="pref_cat_wear_os_summary">Dla zegarków z systemem Wear OS, np. wszystkich zegarków Google Pixel, Samsung Galaxy Watch 4 i nowszych oraz wielu innych.</string>
     <string name="pref_cat_watchdrip_summary">Dla zegarków obsługiwanych przez zewnętrzną aplikację WatchDrip+, takich jak większość modeli Mi Band, Xiaomi Smart Band i Amazfit.</string>
-    <string name="pref_cat_garminpebble_summary">Dla urządzeń i aplikacji, które mogą odbierać dane glukozy z usługi sieciowej xDrip+, takich jak zegarki Garmin, Pebble i niektóre zegarki Fitbit.</string>
+    <string name="pref_cat_garminpebble_summary">Dla urządzeń i aplikacji, które mogą odbierać dane glukozy z usługi sieciowej xDrip+, takich jak zegarki Garmin i niektóre zegarki Fitbit.</string>
     <string name="pref_garmin_watchfaces_summary">Naciśnij tutaj, aby otworzyć sklep Connect IQ dla tarcz zegarka xDrip+.\nJeśli tarcza zegarka obsługuje xDrip+, powinna być również kompatybilna z tą aplikacją.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Naciśnij tutaj, aby otworzyć stronę Glance, która obsługuje usługi sieciowe xDrip+.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Naciśnij tutaj, aby otworzyć tarcze zegarka Pebble zaprojektowane dla xDrip+, które powinny być również kompatybilne z tą aplikacją.</string>
     <string name="gmi">Wskaźnik GMI</string>
     <string name="pref_lockscreen_x_pos">Pozycja pozioma</string>
     <string name="pref_lockscreen_x_pos_summary">Pozioma pozycja obrazu: \n0 oznacza lewą stronę wyświetlacza \n40 oznacza prawą stronę wyświetlacza</string>
@@ -950,7 +948,7 @@
     <string name="alarm_ignore_snooze_for_obsolete_summary">Ten alarm powiadomi Cię nawet wtedy, gdy aktywna jest drzemka lub trwa ogólna cicha godzina dla wszystkich alarmów, gwarantując, że zostaniesz powiadomiony o braku nowej wartości glukozy.</string>
     <string name="alarm_inactive_auto_reenable">Automatyczne ponowne włączenie</string>
     <string name="alarm_inactive_auto_reenable_summary">Po wyłączeniu cichej godziny zostanie ona ponownie włączona o godzinie zakończenia.</string>
-    <string name="pref_cat_garminpebble">Zegarki Garmin, Fitbit i Pebble</string>
+    <string name="pref_cat_garminpebble">Zegarki Garmin i Fitbit</string>
 
     <plurals name="minutes_long">
         <item quantity="one">%d minuta</item>

@@ -902,7 +902,7 @@ GlucoDataHandler 只會將血糖數據寫入健康連結，除非您明確授予
     <string name="pref_switch_xdrip_server_reduce_data_summary">這會將提供的數據減至最少，以防止某些 Garmin 手錶上出現記憶體問題。\n請檢查與您的錶盤的相容性。</string>
     <string name="error_port_in_use">連接埠正在使用中！\n請停止在此連接埠上運行的其他網頁伺服器，然後重新啟動本機網頁伺服器。</string>
     <string name="state_active">啟用中</string>
-    <string name="pref_garmin_info_summary">Garmin、Fitbit 或 Pebble 沒有專用應用程式，只有一個本機網頁伺服器，供支援 xDrip+ 的錶盤使用。\n只需在 Connect IQ 商店中搜尋此類錶盤，並為其設定 xDrip+ 來源即可。\n重要提示：如果您也使用 xDrip+ 或 Juggluco，您只能在一個應用程式中啟用本機網頁伺服器，因為它們使用相同的連接埠 (17580)！</string>
+    <string name="pref_garmin_info_summary">Garmin 或 Fitbit 沒有專用應用程式，只有一個本機網頁伺服器，供支援 xDrip+ 的錶盤使用。\n只需在 Connect IQ 商店中搜尋此類錶盤，並為其設定 xDrip+ 來源即可。\n重要提示：如果您也使用 xDrip+ 或 Juggluco，您只能在一個應用程式中啟用本機網頁伺服器，因為它們使用相同的連接埠 (17580)！</string>
     <string name="remaining">剩餘</string>
     <string name="pref_switch_xdrip_open_server">開放網頁伺服器</string>
     <string name="pref_switch_xdrip_open_server_summary">讓網頁伺服器對網路中的其他裝置開放。\n這可能會導致安全問題，因此只有在您確實需要從網路存取網頁伺服器數據時才啟用它。\nGarmin 錶盤直接從手機請求數據，因此不需要開放伺服器！</string>
@@ -931,14 +931,12 @@ GlucoDataHandler 只會將血糖數據寫入健康連結，除非您明確授予
     <string name="src_ns_summary">遠端追蹤 Nightscout 網頁服務。</string>
     <string name="pref_cat_wear_os_summary">適用於 Wear OS 手錶，例如所有 Google Pixel Watch、Samsung Galaxy Watch 4 及更新版本，以及許多其他手錶。</string>
     <string name="pref_cat_watchdrip_summary">適用於外部 WatchDrip+ 應用程式支援的手錶，例如大多數小米手環 (Xiaomi Smart Band) 和 Amazfit 型號。</string>
-    <string name="pref_cat_garminpebble">Garmin、Fitbit 和 Pebble 手錶</string>
-    <string name="pref_cat_garminpebble_summary">適用於可從 xDrip+ 網頁服務接收血糖數據的裝置和應用程式，例如 Garmin、Pebble 和一些 Fitbit 手錶。</string>
+    <string name="pref_cat_garminpebble">Garmin 和 Fitbit 手錶</string>
+    <string name="pref_cat_garminpebble_summary">適用於可從 xDrip+ 網頁服務接收血糖數據的裝置和應用程式，例如 Garmin 和一些 Fitbit 手錶。</string>
     <string name="pref_garmin_watchfaces_summary">按此處打開 Connect IQ 商店以尋找 xDrip+ 錶盤。\n如果錶盤支援 xDrip+，它們也應該與此應用程式相容。</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">按此處打開支援 xDrip+ 網頁服務的 Glance 網頁。</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">按此處打開專為 xDrip+ 設計的 Pebble 錶盤，它們也應該與此應用程式相容。</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">水平位置</string>
     <string name="pref_lockscreen_x_pos_summary">影像的水平位置：\n0 是顯示器的左側\n40 是顯示器的右側</string>

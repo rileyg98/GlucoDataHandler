@@ -898,7 +898,7 @@ Sie können diese Berechtigungen jederzeit in den Health Connect App-Einstellung
     <string name="pref_switch_xdrip_server_reduce_data_summary">Dies reduziert die bereitgestellten Daten auf ein Minimum, um Speicherprobleme bei einigen Garmin-Uhren zu vermeiden.\nDas funktioniert gegebenenfalls nicht mit jedem Zifferblatt.</string>
     <string name="error_port_in_use">Port wird bereits verwendet!\nBitte andere Webserver beenden, die auf diesem Port laufen, und danach den lokalen Webserver erneut starten.</string>
     <string name="state_active">aktiv</string>
-    <string name="pref_garmin_info_summary">Es gibt keine dedizierte App für Garmin, Fitbit oder Pebble, nur einen lokalen Webserver, der von Zifferblättern mit xDrip+-Unterstützung verwendet wird.\nEinfach im Connect IQ Store nach Zifferblättern für xDrip+ suchen und die xDrip+-Quelle einrichten.\nWICHTIG: Wenn auch xDrip+ oder Juggluco verwendet wird, kann der lokale Webserver nur in einer App aktiviert werden, da derselbe Port (17580) verwendet wird!</string>
+    <string name="pref_garmin_info_summary">Es gibt keine dedizierte App für Garmin oder Fitbit, nur einen lokalen Webserver, der von Zifferblättern mit xDrip+-Unterstützung verwendet wird.\nEinfach im Connect IQ Store nach Zifferblättern für xDrip+ suchen und die xDrip+-Quelle einrichten.\nWICHTIG: Wenn auch xDrip+ oder Juggluco verwendet wird, kann der lokale Webserver nur in einer App aktiviert werden, da derselbe Port (17580) verwendet wird!</string>
     <string name="remaining">Verbleibend</string>
     <string name="pref_switch_xdrip_open_server">Offener Webserver</string>
     <string name="pref_switch_xdrip_open_server_summary">Diese Einstellung macht den Webserver für andere Geräte im Netzwerk verfügbar.\nDies kann Sicherheitsprobleme verursachen, also nur aktivieren, wenn wirklich von einem anderen Gerät auf die Daten des Webservers zugegriffen werden muss.\nDie Garmin-Zifferblätter fordern Daten direkt auf dem Telefon an, daher ist kein offener Server erforderlich!</string>
@@ -927,14 +927,12 @@ Sie können diese Berechtigungen jederzeit in den Health Connect App-Einstellung
     <string name="src_ns_summary">Nightscout Webdienst aus der Ferne folgen.</string>
     <string name="pref_cat_wear_os_summary">Für Wear OS-Uhren, z. B. alle Google Pixel Watches, Samsung Galaxy Watch 4 und neuere sowie viele andere.</string>
     <string name="pref_cat_watchdrip_summary">Für Uhren, die von der externen WatchDrip+-App unterstützt werden, wie die meisten Mi Band, Xiaomi Smart Band- und Amazfit-Modelle.</string>
-    <string name="pref_cat_garminpebble">Garmin-, Fitbit- und Pebble-Uhren</string>
-    <string name="pref_cat_garminpebble_summary">Für Geräte und Apps, die Glukosedaten vom xDrip+-Webdienst empfangen können, wie Garmin-, Pebble- und einige Fitbit-Uhren.</string>
+    <string name="pref_cat_garminpebble">Garmin- und Fitbit-Uhren</string>
+    <string name="pref_cat_garminpebble_summary">Für Geräte und Apps, die Glukosedaten vom xDrip+-Webdienst empfangen können, wie Garmin- und einige Fitbit-Uhren.</string>
     <string name="pref_garmin_watchfaces_summary">Hier drücken, um den Connect IQ Store für xDrip+-Zifferblätter zu öffnen.\nWenn die Zifferblätter xDrip+ unterstützen, sollten sie auch mit dieser App kompatibel sein.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Hier drücken, um die Glance-Webseite zu öffnen, die xDrip+-Webdienste unterstützt.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Hier drücken, um für xDrip+ entwickelte Pebble-Zifferblätter zu öffnen, die auch mit dieser App kompatibel sein sollten.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Horizontale Position</string>
     <string name="pref_lockscreen_x_pos_summary">Horizontale Position des Bildes:\n0 ist der linke Rand des Displays\n40 ist der rechte Rand des Displays</string>

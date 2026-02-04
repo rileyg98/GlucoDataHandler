@@ -895,7 +895,7 @@ Puoi gestire queste autorizzazioni in qualsiasi momento nelle impostazioni dell\
     <string name="pref_switch_xdrip_server_reduce_data_summary">Questo ridurrà i dati forniti al minimo per prevenire problemi di memoria su alcuni orologi Garmin.\nVerifica la compatibilità con il tuo quadrante.</string>
     <string name="error_port_in_use">La porta è in uso!\nArresta altri server web in esecuzione su questa porta e riavvia il server web locale.</string>
     <string name="state_active">attivo</string>
-    <string name="pref_garmin_info_summary">Non esiste un\'app dedicata per Garmin, Fitbit o Pebble, ma solo un server web locale utilizzato dai quadranti con supporto xDrip+.\nCerca tali quadranti nel Connect IQ Store e imposta la fonte xDrip+.\nIMPORTANTE: se usi anche xDrip+ o Juggluco, puoi abilitare il server web locale solo in un\'unica app, poiché utilizzano la stessa porta (17580)!</string>
+    <string name="pref_garmin_info_summary">Non esiste un\'app dedicata per Garmin o Fitbit, ma solo un server web locale utilizzato dai quadranti con supporto xDrip+.\nCerca tali quadranti nel Connect IQ Store e imposta la fonte xDrip+.\nIMPORTANTE: se usi anche xDrip+ o Juggluco, puoi abilitare il server web locale solo in un\'unica app, poiché utilizzano la stessa porta (17580)!</string>
     <string name="remaining">Rimanente</string>
     <string name="pref_switch_xdrip_open_server">Apri server web</string>
     <string name="pref_switch_xdrip_open_server_summary">Rendi il server web accessibile ad altri dispositivi nella rete.\nCiò potrebbe causare problemi di sicurezza, quindi abilitalo solo se hai davvero bisogno di accedere ai dati del server dalla rete.\nI quadranti Garmin richiedono i dati direttamente sul telefono, quindi non è necessario un server aperto!</string>
@@ -924,14 +924,12 @@ Puoi gestire queste autorizzazioni in qualsiasi momento nelle impostazioni dell\
     <string name="src_ns_summary">Segui da remoto il servizio web Nightscout.</string>
     <string name="pref_cat_wear_os_summary">Per orologi Wear OS, ad es. tutti i Google Pixel Watch, Samsung Galaxy Watch 4 e successivi, e molti altri.</string>
     <string name="pref_cat_watchdrip_summary">Per orologi supportati dall\'app esterna WatchDrip+, come la maggior parte dei modelli Mi Band, Xiaomi Smart Band e Amazfit.</string>
-    <string name="pref_cat_garminpebble">Orologi Garmin, Fitbit e Pebble</string>
-    <string name="pref_cat_garminpebble_summary">Per dispositivi e app che possono ricevere dati glicemici dal servizio web di xDrip+, come Garmin, Pebble e alcuni orologi Fitbit.</string>
+    <string name="pref_cat_garminpebble">Orologi Garmin e Fitbit</string>
+    <string name="pref_cat_garminpebble_summary">Per dispositivi e app che possono ricevere dati glicemici dal servizio web di xDrip+, come Garmin e alcuni orologi Fitbit.</string>
     <string name="pref_garmin_watchfaces_summary">Premi qui per aprire il Connect IQ store per i quadranti xDrip+.\nSe i quadranti supportano xDrip+, dovrebbero essere compatibili anche con questa app.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Premi qui per aprire la pagina web di Glance, che supporta i servizi web di xDrip+.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Premi qui per aprire i quadranti Pebble progettati per xDrip+, che dovrebbero essere compatibili anche con questa app.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Posizione orizzontale</string>
     <string name="pref_lockscreen_x_pos_summary">Posizione orizzontale dell\'immagine:\n0 è il lato sinistro del display\n40 è il lato destro del display</string>
