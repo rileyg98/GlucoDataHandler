@@ -202,24 +202,25 @@ object HealthConnectManager: NotifierInterface {
         return true
     }
 
-    fun writeLastValues(context: Context) {
+    fun writeLastValues(context: Context): Boolean {
         try {
-            val minTime = maxOf(lastValueTime, System.currentTimeMillis() - Constants.DB_MAX_DATA_WEAR_TIME_MS)
+            val minTime = maxOf(lastValueTime + 1, System.currentTimeMillis() - Constants.DB_MAX_DATA_WEAR_TIME_MS)
             Log.d(LOG_ID, "Write last values from ${Utils.getUiTimeStamp(minTime)}")
-            writeGlucoseData(context, dbAccess.getGlucoseValues(minTime))
+            return writeGlucoseData(context, dbAccess.getGlucoseValues(minTime))
         } catch (exc: Exception) {
             Log.e(LOG_ID, "Error writing last values: ${exc.message}")
         }
+        return false
     }
 
-    private fun writeGlucoseData(context: Context, glucoseValues: List<GlucoseValue>) {
+    private fun writeGlucoseData(context: Context, glucoseValues: List<GlucoseValue>): Boolean {
         if(!enabled)
-            return
+            return false
         val client = getHealthConnectClient(context)
         if (client == null) {
             state = HealthConnectState.NOT_AVAILABLE
             Log.e(LOG_ID, "HealthConnectClient is not available (client is null).") // Changed log message
-            return
+            return false
         }
 
         scope.launch {
@@ -249,7 +250,7 @@ object HealthConnectManager: NotifierInterface {
                     }
 
                     client.insertRecords(recordsToInsert)
-                    Log.i(LOG_ID, "Successfully wrote ${recordsToInsert.size} glucose data to Health Connect")
+                    Log.i(LOG_ID, "Successfully wrote ${recordsToInsert.size} glucose data to Health Connect from ${Utils.getUiTimeStamp(glucoseValues.first().timestamp)} to ${Utils.getUiTimeStamp(glucoseValues.last().timestamp)}")
                     updateLastValueTime(glucoseValues.last().timestamp)
                 } else {
                     Log.d(LOG_ID, "No glucose data to write to Health Connect")
@@ -260,7 +261,7 @@ object HealthConnectManager: NotifierInterface {
                 state = HealthConnectState.ERROR
             }
         }
-        return
+        return true
     }
 
     private fun updateLastValueTime(time: Long) {

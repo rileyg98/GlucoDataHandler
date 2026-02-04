@@ -175,6 +175,13 @@ abstract class SettingsFragmentBase(private val prefResId: Int) : SettingsFragme
         }
     }
 
+    protected fun setPasswordPref(prefName: String) {
+        val pwdPref = findPreference<EditTextPreference>(prefName)
+        pwdPref?.setOnBindEditTextListener {editText ->
+            editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+        }
+    }
+
     private fun update() {
         val sharedPref = preferenceManager.sharedPreferences!!
         updateEnableStates(sharedPref)

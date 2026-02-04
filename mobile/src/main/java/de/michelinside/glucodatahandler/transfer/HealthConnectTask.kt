@@ -12,8 +12,7 @@ class HealthConnectTask: TransferTask() {
 
     override fun execute(context: Context): Boolean {
         Log.d(LOG_ID, "execute called")
-        HealthConnectManager.writeLastValues(context)
-        return true
+        return HealthConnectManager.writeLastValues(context)
     }
 
     override fun enable() {

@@ -24,6 +24,7 @@ object TransferService: NotifierInterface, SharedPreferences.OnSharedPreferenceC
             taskList.add(ToXDripBroadcast())
             taskList.add(XDripBroadcast())
             taskList.add(GlucoDataBroadcast())
+            taskList.add(NightscoutUploadTask())
 
             InternalNotifier.addNotifier(
                 context,

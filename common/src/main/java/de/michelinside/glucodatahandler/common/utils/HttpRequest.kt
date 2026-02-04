@@ -54,6 +54,10 @@ class HttpRequest {
             }
             return false
         }
+
+        fun isLocalHost(url: String): Boolean {
+            return url.contains("127.0.0.1") || url.lowercase().contains("localhost")
+        }
     }
 
     fun stop() {
@@ -92,39 +96,43 @@ class HttpRequest {
             var conn: HttpURLConnection? = null
             try {
                 val urlConnection = URL(url).openConnection()
-                if (trustAllCertificates && urlConnection is HttpsURLConnection) {
-                    trustAllCertificates(urlConnection)
+                conn = urlConnection as HttpURLConnection
+
+                // 1. SET SSL/Trust BEFORE anything else
+                if (trustAllCertificates && conn is HttpsURLConnection) {
+                    trustAllCertificates(conn)
                 }
 
-                conn = urlConnection as HttpURLConnection
-                if (!header.isNullOrEmpty()) {
-                    header.forEach {
-                        if (BuildConfig.DEBUG)
-                            Log.v(LOG_ID, "Add to header: ${it.key} = ${it.value}")
-                        conn.setRequestProperty(it.key, it.value)
-                    }
-                }
-                conn.doInput = true
+                // 2. SET METHOD
+                conn.requestMethod = if (postRequest) "POST" else "GET"
+
+                // 3. CONFIGURE TIMEOUTS & FLAGS
                 conn.connectTimeout = 10000
                 conn.readTimeout = 20000
-                if (!postRequest) {
-                    Log.i(LOG_ID, "Send GET request to ${conn.url}")
-                    conn.requestMethod = "GET"
-                    conn.doOutput = false
-                } else {
-                    Log.i(LOG_ID, "Send POST request to ${conn.url}")
-                    conn.requestMethod = "POST"
-                    if (postData != null) {
-                        conn.doOutput = true
-                        DataOutputStream(conn.outputStream).use { os ->
-                            val bytes: ByteArray = postData.toByteArray()
-                            Log.v(LOG_ID, "Send data: $postData with size ${bytes.size}")
-                            os.write(bytes, 0, bytes.size)
-                        }
-                    } else {
-                        conn.doOutput = false
-                    }
+                conn.doInput = true
+
+                header?.forEach { (key, value) ->
+                    if (BuildConfig.DEBUG)
+                        Log.v(LOG_ID, "Add to header: $key = $value")
+                    conn.setRequestProperty(key, value)
                 }
+
+
+
+                if (postRequest && postData != null) {
+                    conn.doOutput = true
+                    conn.outputStream.use { os ->
+                        val bytes: ByteArray = postData.toByteArray()
+                        if (BuildConfig.DEBUG)
+                            Log.v(LOG_ID, "Send data: $postData with size ${bytes.size}")
+                        os.write(bytes, 0, bytes.size)
+                        os.flush()
+                    }
+                } else {
+                    conn.doOutput = false
+                }
+
+                Log.i(LOG_ID, "${conn.requestMethod} - request to $url")
                 handleResponse(conn)
             } catch (exc: Exception) {
                 Log.e(LOG_ID, "request exception: " + exc.toString())

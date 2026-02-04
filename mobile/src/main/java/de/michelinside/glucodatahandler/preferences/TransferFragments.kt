@@ -48,6 +48,11 @@ class TransferSettingsFragment: SettingsFragmentBase(R.xml.pref_transfer) {
                 val toGlucodataEnabled = preferenceManager.sharedPreferences!!.getBoolean(Constants.SHARED_PREF_SEND_TO_GLUCODATA_AOD, false)
                 setEnableState(prefLocalApps, xdripEnabled || toXdripEnabled || toGlucodataEnabled)
             }
+            val prefNsUpload = findPreference<Preference>("transfer_nightscout")
+            if(prefNsUpload != null ) {
+                val enabled = preferenceManager.sharedPreferences!!.getBoolean(Constants.SHARED_PREF_NIGHTSCOUT_UPLOAD_ENABLED, false)
+                setEnableState(prefNsUpload, enabled)
+            }
         } catch (exc: Exception) {
             Log.e(LOG_ID, "updateEnableStates exception: " + exc.toString())
         }
@@ -138,22 +143,26 @@ class TransferHealthConnectFragment: SettingsFragmentBase(R.xml.pref_transfer_he
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-        if(key == Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT) {
-            mustCheckPermission = false
-            openHealthSettings = false
-            if(sharedPreferences!!.getBoolean(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT, false)) {
-                lifecycleScope.launch {
-                    requestStartTime = System.currentTimeMillis()  // set start time to check, if the dialog was not opened...
-                    val isReady = HealthConnectManager.checkAndEnsureRequirements(requireContext(), requestPermissionLauncher)
-                    if (isReady) {
-                        Log.d(LOG_ID, "Health Connect ready to use.")
-                    } else {
-                        Log.d(LOG_ID, "Health Connect requirements not met, actions initiated.")
+        try {
+            if(key == Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT) {
+                mustCheckPermission = false
+                openHealthSettings = false
+                if(sharedPreferences!!.getBoolean(Constants.SHARED_PREF_SEND_TO_HEALTH_CONNECT, false)) {
+                    lifecycleScope.launch {
+                        requestStartTime = System.currentTimeMillis()  // set start time to check, if the dialog was not opened...
+                        val isReady = HealthConnectManager.checkAndEnsureRequirements(requireContext(), requestPermissionLauncher)
+                        if (isReady) {
+                            Log.d(LOG_ID, "Health Connect ready to use.")
+                        } else {
+                            Log.d(LOG_ID, "Health Connect requirements not met, actions initiated.")
+                        }
                     }
                 }
-            }
-        } else
-            super.onSharedPreferenceChanged(sharedPreferences, key)
+            } else
+                super.onSharedPreferenceChanged(sharedPreferences, key)
+        } catch (exc: Exception) {
+            Log.e(LOG_ID, "onSharedPreferenceChanged exception: " + exc.toString())
+        }
     }
 }
 
@@ -164,5 +173,44 @@ class TransferBroadcastFragement: SettingsFragmentBase(R.xml.pref_transfer_local
         setupReceivers(Constants.GLUCODATA_BROADCAST_ACTION, Constants.SHARED_PREF_GLUCODATA_RECEIVERS)
         setupReceivers(Constants.XDRIP_ACTION_GLUCOSE_READING, Constants.SHARED_PREF_XDRIP_RECEIVERS)
         setupReceivers(Intents.XDRIP_BROADCAST_ACTION, Constants.SHARED_PREF_XDRIP_BROADCAST_RECEIVERS)
+    }
+}
+
+class TransferNightscoutFragment: SettingsFragmentBase(R.xml.pref_transfer_nightscout) {
+
+    override fun initPreferences() {
+        Log.v(LOG_ID, "initPreferences called")
+        super.initPreferences()
+        setPasswordPref(Constants.SHARED_PREF_NIGHTSCOUT_UPLOAD_SECRET)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        update()
+    }
+
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        try {
+            super.onSharedPreferenceChanged(sharedPreferences, key)
+            if(key == Constants.SHARED_PREF_NIGHTSCOUT_UPLOAD_URL)
+                update()
+        } catch (exc: Exception) {
+            Log.e(LOG_ID, "onSharedPreferenceChanged exception: " + exc.toString())
+        }
+    }
+
+    private fun update() {
+        try {
+            val sharedPref = preferenceManager.sharedPreferences!!
+            val switchNightscout = findPreference<SwitchPreferenceCompat>(Constants.SHARED_PREF_NIGHTSCOUT_UPLOAD_ENABLED)
+            if (switchNightscout != null) {
+                val url = sharedPref.getString(Constants.SHARED_PREF_NIGHTSCOUT_UPLOAD_URL, "")!!.trim()
+                switchNightscout.isEnabled = url.isNotEmpty() && url.isNotEmpty()
+                if(!switchNightscout.isEnabled)
+                    switchNightscout.isChecked = false
+            }
+        } catch (exc: Exception) {
+            Log.e(LOG_ID, "updateEnableStates exception: " + exc.toString())
+        }
     }
 }
