@@ -8,7 +8,7 @@
         <SwitchPreferenceCompat
             app:key="source_aidex_enabled"
             app:title="@string/src_enabled"
-            app:summary="Enable AiDEX broadcast receiver."
+            app:summary="@string/source_aidex_summary"
             app:defaultValue="true"
             app:iconSpaceReserved="false" />
 

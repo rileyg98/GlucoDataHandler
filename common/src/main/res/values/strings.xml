@@ -174,8 +174,8 @@
     <string name="source_request_interval_20">20 minutes</string>
     <string name="source_request_interval_30">30 minutes</string>
     <string name="source_request_interval_alarm">Alarm only</string>
-
-
+    <string name="source_aidex_summary" translatable="false">Enable AiDEX broadcast receiver. Requires AiDEX app version equal to or less than 1.0.17.</string>
+    <string name="pref_source_aidex_summary" translatable="false">Receives broadcasts from the AiDEX app. Requires AiDEX app version equal to or less than 1.0.17.</string>
     <!-- LibreLink source -->
     <string name="state_disabled">disabled</string>
     <string name="state_not_connected">not connected</string>

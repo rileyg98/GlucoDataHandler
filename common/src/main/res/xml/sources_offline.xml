@@ -58,7 +58,7 @@
         <Preference
             android:key="source_aidex_enabled"
             android:title="@string/source_aidex"
-            android:summary="Receives broadcasts from the AiDEX app."
+            android:summary="@string/pref_source_aidex_summary"
             app:fragment="de.michelinside.glucodatahandler.common.preferences.SourceAidex"
             app:iconSpaceReserved="false" />
         <Preference
