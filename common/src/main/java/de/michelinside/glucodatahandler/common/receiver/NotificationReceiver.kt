@@ -26,6 +26,7 @@ import kotlin.math.abs
 class NotificationReceiver : NotificationListenerService(), NamedReceiver {
     private var parsedTextViews = mutableListOf<String>()
     private var lastValueNotificationTime = 0L
+    private var lastNewValueTime = 0L
     private var lastIobNotificationTime = 0L
     private var updateOnlyChangedValue = false
     private var lastValue = Float.NaN
@@ -179,6 +180,8 @@ class NotificationReceiver : NotificationListenerService(), NamedReceiver {
             return true
         if(packageName.lowercase().startsWith("com.gluroo."))  // Gluroo
             return true
+        if(packageName.lowercase().startsWith("com.microtech.aidexx.diaexport."))  // DiaExpert
+            return true
 
         if(onGoingNotificationPackage == packageName)
             return true
@@ -231,6 +234,13 @@ class NotificationReceiver : NotificationListenerService(), NamedReceiver {
             return true
         return false
     }
+
+    private fun hasIrregularOneMinuteNotification(packageName: String): Boolean {
+        if(packageName.lowercase().startsWith("com.microtech.aidexx.diaexport."))  // DiaExpert
+            return true
+        return false
+    }
+
 
     private fun isSpecialNotification(sbn: StatusBarNotification): Boolean {
         // some apps also provides foreground notifications, which should be ignored...
@@ -333,6 +343,16 @@ class NotificationReceiver : NotificationListenerService(), NamedReceiver {
                 startWaitThread(sbn, (315-diffValueTime)*1000)   // wait for the case, the value is the same and there is no newer notification
                 updateOnlyChangedValue=true
                 return true
+            } else if(hasIrregularOneMinuteNotification(sbn.packageName)) {
+                val diffLastValueTime = (sbn.postTime - lastNewValueTime)/1000 // in seconds
+                Log.i(LOG_ID, "Handle irregular one minute notification - diff last new value: $diffLastValueTime")
+                if(diffLastValueTime <= 1L)
+                    return false
+                if(diffLastValueTime < minDiff) {
+                    Log.i(LOG_ID, "Check for changed value only")
+                    updateOnlyChangedValue = true
+                    return true
+                }
             }
 
             if(diffValueTime < minDiff) {
@@ -657,6 +677,7 @@ class NotificationReceiver : NotificationListenerService(), NamedReceiver {
             stopWaitThread()
             receivedNotifications.clear()
             lastValueChanged = lastValue != glucoseValue
+            lastNewValueTime = sbn.postTime
             lastValue = glucoseValue
             val glucoExtras = Bundle()
             glucoExtras.putString(ReceiveData.SERIAL, PackageUtils.getAppName(applicationContext, sbn.packageName))
