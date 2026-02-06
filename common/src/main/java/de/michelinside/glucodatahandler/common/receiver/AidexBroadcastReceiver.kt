@@ -17,13 +17,14 @@ class AidexBroadcastReceiver : NamedBroadcastReceiver() {
     }
 
     override fun onReceiveData(context: Context, intent: Intent) {
-        Log.d(LOG_ID, "onReceiveData called for action ${intent.action}")
         try {
+            Log.d(LOG_ID, "onReceiveData called for action ${intent.action}")
             if (intent.action == "com.microtechmd.cgms.NOTIFICATION") {
                 val message = intent.getSerializableExtra("message")
                 if (message is BleMessage) {
                     if (message.operation == 1 && message.isSuccess) {
                         val rawData = message.data
+                        Log.d(LOG_ID, "Hex dump of data payload: ${getHexDump(rawData)}")
                         val serialNumber = intent.getStringExtra("sn")
                         val record = AiDexCgmParser.parse(rawData, serialNumber)
                         if (record != null) {
@@ -31,12 +32,13 @@ class AidexBroadcastReceiver : NamedBroadcastReceiver() {
                             val extras = Bundle()
                             extras.putLong(ReceiveData.TIME, record.timestamp)
                             extras.putFloat(ReceiveData.GLUCOSECUSTOM, record.glucose)
-                            // Convert the native mmol/L back into mg/dL for GDH
                             extras.putInt(ReceiveData.MGDL, GlucoDataUtils.mmolToMg(record.glucose).toInt())
-                            extras.putString(ReceiveData.SERIAL, record.serialNumber)
+                            extras.putString(ReceiveData.SERIAL, record.serialNumber + "-" + record.sensorNumber)
                             // Battery is not directly supported in ReceiveData bundle, but we have it.
                             // extras.putInt("battery", record.battery)
-                            ReceiveData.handleIntent(context, DataSource.AIDEX, extras)
+                            // Sensor age in minutes, to seconds, to ms, subtracted from time now.
+                            extras.putLong(ReceiveData.SENSOR_START_TIME, System.currentTimeMillis() - (record.sensorAge)*60*1000)
+
                         }
                     }
                 }
@@ -44,5 +46,14 @@ class AidexBroadcastReceiver : NamedBroadcastReceiver() {
         } catch (exc: Exception) {
             Log.e(LOG_ID, "onReceiveData exception: " + exc.message.toString() )
         }
+    }
+
+    // Utility function to convert ByteArray to a hex dump string (compatible with old API)
+    private fun getHexDump(bytes: ByteArray): String {
+        val result = StringBuilder()
+        for (byte in bytes) {
+            result.append(String.format("%02X ", byte))
+        }
+        return result.toString().trim()
     }
 }
