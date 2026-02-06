@@ -25,11 +25,6 @@
             android:title="@string/pref_fitbit_watchfaces"
             android:summary="@string/pref_fitbit_watchfaces_summary"
             app:iconSpaceReserved="false" />
-        <Preference
-            android:key="open_pebble_link"
-            android:title="@string/pref_pebble_watchfaces"
-            android:summary="@string/pref_pebble_watchfaces_summary"
-            app:iconSpaceReserved="false" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/advanced_settings"

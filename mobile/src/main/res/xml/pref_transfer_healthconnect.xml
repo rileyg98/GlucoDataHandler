@@ -28,5 +28,10 @@
                 android:title="@string/alarm_interval"
                 android:summary="@string/transfer_values_interval_summary"
                 app:iconSpaceReserved="false" />
+        <Preference
+            android:key="health_connect_settings"
+            android:title="@string/health_connect_settings"
+            android:summary="@string/health_connect_settings_summary"
+            app:iconSpaceReserved="false"/>
     </PreferenceCategory>
 </PreferenceScreen>

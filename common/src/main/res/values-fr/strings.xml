@@ -904,7 +904,7 @@ Vous pouvez gérer ces autorisations à tout moment dans les paramètres de l\'a
     <string name="pref_switch_xdrip_server_reduce_data_summary">Cela réduira les données fournies au minimum pour éviter les problèmes de mémoire sur certaines montres Garmin.\nVeuillez vérifier la compatibilité avec votre cadran de montre.</string>
     <string name="error_port_in_use">Le port est en cours d\'utilisation !\nVeuillez arrêter les autres serveurs web fonctionnant sur ce port et redémarrer le serveur web local.</string>
     <string name="state_active">actif</string>
-    <string name="pref_garmin_info_summary">Il n\'y a pas d\'application dédiée pour Garmin, Fitbit ou Pebble, juste un serveur web local, qui est utilisé par les cadrans de montre avec support xDrip+.\nRecherchez simplement de tels cadrans dans le Connect IQ Store et configurez la source xDrip+ pour ces cadrans.\nIMPORTANT : si vous utilisez également xDrip+ ou Juggluco, vous ne pouvez activer le serveur web local que dans une seule application, car ils utilisent le même port (17580) !</string>
+    <string name="pref_garmin_info_summary">Il n\'y a pas d\'application dédiée pour Garmin ou Fitbit, juste un serveur web local, qui est utilisé par les cadrans de montre avec support xDrip+.\nRecherchez simplement de tels cadrans dans le Connect IQ Store et configurez la source xDrip+ pour ces cadrans.\nIMPORTANT : si vous utilisez également xDrip+ ou Juggluco, vous ne pouvez activer le serveur web local que dans une seule application, car ils utilisent le même port (17580) !</string>
     <string name="remaining">Restant</string>
     <string name="pref_switch_xdrip_open_server">Ouvrir le serveur web</string>
     <string name="pref_switch_xdrip_open_server_summary">Rendre le serveur web ouvert aux autres appareils du réseau.\nCela peut causer des problèmes de sécurité, donc ne l\'activez que si vous avez vraiment besoin d\'accéder aux données du serveur web depuis le réseau.\nLes cadrans de montre Garmin demandent les données directement sur le téléphone, donc aucun serveur ouvert n\'est nécessaire !</string>
@@ -933,14 +933,12 @@ Vous pouvez gérer ces autorisations à tout moment dans les paramètres de l\'a
     <string name="src_ns_summary">Suivre à distance le service web Nightscout.</string>
     <string name="pref_cat_wear_os_summary">Pour les montres Wear OS, par ex. toutes les Google Pixel Watches, Samsung Galaxy Watch 4 et plus récentes, et bien d\'autres.</string>
     <string name="pref_cat_watchdrip_summary">Pour les montres prises en charge par l\'application externe WatchDrip+, telles que la plupart des modèles Mi Band, Xiaomi Smart Band et Amazfit.</string>
-    <string name="pref_cat_garminpebble">Montres Garmin, Fitbit et Pebble</string>
-    <string name="pref_cat_garminpebble_summary">Pour les appareils et applications pouvant recevoir des données de glycémie du service web xDrip+, tels que Garmin, Pebble et certaines montres Fitbit.</string>
+    <string name="pref_cat_garminpebble">Montres Garmin et Fitbit</string>
+    <string name="pref_cat_garminpebble_summary">Pour les appareils et applications pouvant recevoir des données de glycémie du service web xDrip+, tels que Garmin et certaines montres Fitbit.</string>
     <string name="pref_garmin_watchfaces_summary">Appuyez ici pour ouvrir le magasin Connect IQ pour les cadrans de montre xDrip+.\nSi les cadrans prennent en charge xDrip+, ils devraient également être compatibles avec cette application.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Appuyez ici pour ouvrir la page web de Glance, qui prend en charge les services web xDrip+.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Appuyez ici pour ouvrir les cadrans de montre Pebble conçus pour xDrip+, qui devraient également être compatibles avec cette application.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Position horizontale</string>
     <string name="pref_lockscreen_x_pos_summary">Position horizontale de l\'image :\n0 est la gauche de l\'écran\n40 est la droite de l\'écran</string>

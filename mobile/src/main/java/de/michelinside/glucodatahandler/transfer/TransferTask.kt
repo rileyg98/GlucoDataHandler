@@ -46,27 +46,31 @@ abstract class TransferTask {
 
     open fun checkPreferenceChanged(sharedPreferences: SharedPreferences, key: String?): Boolean {
         Log.d(LOG_ID, "checkPreferenceChanged called for key $key")
-        if (key == null) {
-            if(enablePref.isNotEmpty())
+        try {
+            if (key == null) {
+                if(enablePref.isNotEmpty())
+                    enabled = sharedPreferences.getBoolean(enablePref, false)
+                if(intervalPref.isNotEmpty())
+                    interval = sharedPreferences.getInt(intervalPref, defaultInterval)
+                else
+                    interval = defaultInterval
+                Log.i(LOG_ID, "checkPreferenceChanged: enable: $enabled, interval: $interval")
+                updateEnableState()
+                return enabled
+            }
+            if (key == enablePref) {
                 enabled = sharedPreferences.getBoolean(enablePref, false)
-            if(intervalPref.isNotEmpty())
+                Log.i(LOG_ID, "checkPreferenceChanged: enable: $enabled")
+                updateEnableState()
+                return enabled
+            }
+            if (key == intervalPref) {
                 interval = sharedPreferences.getInt(intervalPref, defaultInterval)
-            else
-                interval = defaultInterval
-            Log.i(LOG_ID, "checkPreferenceChanged: enable: $enabled, interval: $interval")
-            updateEnableState()
-            return enabled
-        }
-        if (key == enablePref) {
-            enabled = sharedPreferences.getBoolean(enablePref, false)
-            Log.i(LOG_ID, "checkPreferenceChanged: enable: $enabled")
-            updateEnableState()
-            return enabled
-        }
-        if (key == intervalPref) {
-            interval = sharedPreferences.getInt(intervalPref, defaultInterval)
-            Log.i(LOG_ID, "checkPreferenceChanged: interval: $interval")
-            return enabled  // if enabled, re-check execution after interval has changed...
+                Log.i(LOG_ID, "checkPreferenceChanged: interval: $interval")
+                return enabled  // if enabled, re-check execution after interval has changed...
+            }
+        } catch (exc: Exception) {
+            Log.e(LOG_ID, "checkPreferenceChanged exception: " + exc.message.toString() + "\n" + exc.stackTrace )
         }
         return false
     }

@@ -900,7 +900,7 @@
     <string name="pref_switch_xdrip_server_reduce_data_summary">Spowoduje to ograniczenie dostarczanych danych do minimum, aby zapobiec problemom z pamięcią w niektórych zegarkach Garmin.\nNależy sprawdzić kompatybilność ze swoją tarczą zegarka.</string>
     <string name="error_port_in_use">Port jest używany!\nNależy zatrzymać inny serwer sieciowy działający na tym porcie i ponowne uruchomić lokalny serwer sieciowy.</string>
     <string name="state_active">aktywny</string>
-    <string name="pref_garmin_info_summary">Nie ma dedykowanej aplikacji dla Garmin, Fitbit lub Pebble, tylko lokalny serwer sieciowy, który jest używany przez tarcze zegarków obsługujące przesył danych z xDrip+.\nWystarczy wyszukać takie tarcze w Connect IQ Store i skonfigurować źródło xDrip+ dla tych tarczy.\nWAŻNE: jeśli używasz również xDrip+ lub Juggluco, możesz włączyć lokalny serwer sieciowy tylko w jednej aplikacji, ponieważ używają one tego samego portu (17580)!</string>
+    <string name="pref_garmin_info_summary">Nie ma dedykowanej aplikacji dla Garmin lub Fitbit, tylko lokalny serwer sieciowy, który jest używany przez tarcze zegarków obsługujące przesył danych z xDrip+.\nWystarczy wyszukać takie tarcze w Connect IQ Store i skonfigurować źródło xDrip+ dla tych tarczy.\nWAŻNE: jeśli używasz również xDrip+ lub Juggluco, możesz włączyć lokalny serwer sieciowy tylko w jednej aplikacji, ponieważ używają one tego samego portu (17580)!</string>
     <string name="remaining">Pozostało</string>
     <string name="pref_switch_xdrip_open_server">Otwórz serwer sieciowy</string>
     <string name="pref_switch_xdrip_open_server_summary">Otwórz serwer internetowy dla innych urządzeń w sieci.\nMoże to spowodować problemy z bezpieczeństwem, więc włącz tę funkcję tylko wtedy, gdy naprawdę potrzebujesz dostępu do danych serwera z sieci.\nTarcze zegarków Garmin żądają danych bezpośrednio w telefonie, więc nie jest potrzebny otwarty serwer!</string>
@@ -929,13 +929,11 @@
     <string name="src_ns_summary">Zdalne śledzenie usługi internetowej Nightscout.</string>
     <string name="pref_cat_wear_os_summary">Dla zegarków z systemem Wear OS, np. wszystkich zegarków Google Pixel, Samsung Galaxy Watch 4 i nowszych oraz wielu innych.</string>
     <string name="pref_cat_watchdrip_summary">Dla zegarków obsługiwanych przez zewnętrzną aplikację WatchDrip+, takich jak większość modeli Mi Band, Xiaomi Smart Band i Amazfit.</string>
-    <string name="pref_cat_garminpebble_summary">Dla urządzeń i aplikacji, które mogą odbierać dane glukozy z usługi sieciowej xDrip+, takich jak zegarki Garmin, Pebble i niektóre zegarki Fitbit.</string>
+    <string name="pref_cat_garminpebble_summary">Dla urządzeń i aplikacji, które mogą odbierać dane glukozy z usługi sieciowej xDrip+, takich jak zegarki Garmin i niektóre zegarki Fitbit.</string>
     <string name="pref_garmin_watchfaces_summary">Naciśnij tutaj, aby otworzyć sklep Connect IQ dla tarcz zegarka xDrip+.\nJeśli tarcza zegarka obsługuje xDrip+, powinna być również kompatybilna z tą aplikacją.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Naciśnij tutaj, aby otworzyć stronę Glance, która obsługuje usługi sieciowe xDrip+.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Naciśnij tutaj, aby otworzyć tarcze zegarka Pebble zaprojektowane dla xDrip+, które powinny być również kompatybilne z tą aplikacją.</string>
     <string name="gmi">Wskaźnik GMI</string>
     <string name="pref_lockscreen_x_pos">Pozycja pozioma</string>
     <string name="pref_lockscreen_x_pos_summary">Pozioma pozycja obrazu: \n0 oznacza lewą stronę wyświetlacza \n40 oznacza prawą stronę wyświetlacza</string>
@@ -950,7 +948,7 @@
     <string name="alarm_ignore_snooze_for_obsolete_summary">Ten alarm powiadomi Cię nawet wtedy, gdy aktywna jest drzemka lub trwa ogólna cicha godzina dla wszystkich alarmów, gwarantując, że zostaniesz powiadomiony o braku nowej wartości glukozy.</string>
     <string name="alarm_inactive_auto_reenable">Automatyczne ponowne włączenie</string>
     <string name="alarm_inactive_auto_reenable_summary">Po wyłączeniu cichej godziny zostanie ona ponownie włączona o godzinie zakończenia.</string>
-    <string name="pref_cat_garminpebble">Zegarki Garmin, Fitbit i Pebble</string>
+    <string name="pref_cat_garminpebble">Zegarki Garmin i Fitbit</string>
 
     <plurals name="minutes_long">
         <item quantity="one">%d minuta</item>
@@ -972,4 +970,25 @@
     </plurals>
 
     <string name="dexcom_server_down_error">Serwer Dexcom najwyraźniej nie działa!\nNaciśnij tutaj, aby sprawdzić status serwera.\nJeśli aplikacja Dexcom znajduje się na tym samym telefonie, możesz zamiast tego użyć opcji Czytnik powiadomień.</string>
+
+    <!-- v2.3 -->
+
+    <string name="medtrum_wrong_user_type_info">Only follower users are allowed account.\nPress here to create a new follower account and invite yourself.</string>
+    <string name="notification_reader_value_with_unit">Value with unit</string>
+    <string name="notification_reader_value_with_unit_summary">If the unit (mmol or mg) is part of the value in notification, enable this to ignore all fields without unit.</string>
+
+    <string name="button_yes">Yes</string>
+    <string name="button_no">No</string>
+    <string name="patient_changed">Patient changed</string>
+    <string name="patient_changed_reset_db">You have changed the patient.\nDo you want to reset the database to remove the old patient data?</string>
+    <string name="update">Update</string>
+    <string name="pref_transfer_to_healthconnect_summary">Sharing glucose values with Health Connect.</string>
+    <string name="pref_transfer_to_local_apps_summary">Sending broadcast to other local applications on this device.</string>
+    <string name="transfer_values_interval_summary">Interval for sending glucose values.\nAll values recorded since the last transmission will be included.</string>
+    <string name="health_connect_settings">Open Health Connect</string>
+    <string name="health_connect_settings_summary">Manage permissions and data access for Health Connect.</string>
+    <string name="health_connect_not_supported_version">Health Connect requires at least Android 9.</string>
+    <string name="pref_transfer_to_nightscout_summary">Upload glucose values to Nightscout.</string>
+    <string name="transfer_to_nightscout">Nightscout Upload</string>
+    <string name="label_profile">Profile</string>
 </resources>

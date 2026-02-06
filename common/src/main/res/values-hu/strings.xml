@@ -971,7 +971,7 @@ Ezeket az engedélyeket bármikor kezelheti a Health Connect alkalmazás beáll�
     <string name="pref_switch_xdrip_server_reduce_data_summary">Ez a minimumra csökkenti a szolgáltatott adatokat, hogy megelőzze a memóriaproblémákat néhány Garmin órán.\nKérjük, ellenőrizze a kompatibilitást az óraszámlapjával.</string>
     <string name="error_port_in_use">A port használatban van!\nKérjük, állítsa le az ezen a porton futó többi webszervert, és indítsa újra a helyi webszervert.</string>
     <string name="state_active">aktív</string>
-    <string name="pref_garmin_info_summary">Nincs külön alkalmazás a Garmin, Fitbit vagy Pebble számára, csak egy helyi webszerver, amelyet az xDrip+ támogatással rendelkező óraszámlapok használnak.\nKeressen ilyen óraszámlapokat a Connect IQ Store-ban, és állítsa be az xDrip+ forrást ezekhez.\nFONTOS: ha Ön is használja az xDrip+-t vagy a Juggluco-t, a helyi webszervert csak egy alkalmazásban engedélyezheti, mivel ugyanazt a portot (17580) használják!</string>
+    <string name="pref_garmin_info_summary">Nincs külön alkalmazás a Garmin vagy Fitbit számára, csak egy helyi webszerver, amelyet az xDrip+ támogatással rendelkező óraszámlapok használnak.\nKeressen ilyen óraszámlapokat a Connect IQ Store-ban, és állítsa be az xDrip+ forrást ezekhez.\nFONTOS: ha Ön is használja az xDrip+-t vagy a Juggluco-t, a helyi webszervert csak egy alkalmazásban engedélyezheti, mivel ugyanazt a portot (17580) használják!</string>
     <string name="remaining">Fennmaradó</string>
     <string name="pref_switch_xdrip_open_server">Webszerver megnyitása</string>
     <string name="pref_switch_xdrip_open_server_summary">Tegye a webszervert nyitottá a hálózat többi eszköze számára.\nEz biztonsági problémákat okozhat, ezért csak akkor engedélyezze, ha valóban szüksége van a webszerver adatainak hálózati elérésére.\nA Garmin óraszámlapok közvetlenül a telefonon kérik le az adatokat, így nincs szükség nyitott szerverre!</string>
@@ -1000,14 +1000,12 @@ Ezeket az engedélyeket bármikor kezelheti a Health Connect alkalmazás beáll�
     <string name="src_ns_summary">Nightscout webszolgáltatás távoli követése.</string>
     <string name="pref_cat_wear_os_summary">Wear OS órákhoz, pl. az összes Google Pixel Watch, Samsung Galaxy Watch 4 és újabb, és sok más.</string>
     <string name="pref_cat_watchdrip_summary">A külső WatchDrip+ alkalmazás által támogatott órákhoz, mint például a legtöbb Mi Band, Xiaomi Smart Band és Amazfit modell.</string>
-    <string name="pref_cat_garminpebble">Garmin, Fitbit és Pebble okosórák</string>
-    <string name="pref_cat_garminpebble_summary">Olyan eszközökhöz és alkalmazásokhoz, amelyek glükózadatokat tudnak fogadni az xDrip+ webszolgáltatásból, mint például a Garmin, Pebble és néhány Fitbit óra.</string>
+    <string name="pref_cat_garminpebble">Garmin és Fitbit okosórák</string>
+    <string name="pref_cat_garminpebble_summary">Olyan eszközökhöz és alkalmazásokhoz, amelyek glükózadatokat tudnak fogadni az xDrip+ webszolgáltatásból, mint például a Garmin és néhány Fitbit óra.</string>
     <string name="pref_garmin_watchfaces_summary">Nyomja meg itt a Connect IQ áruház megnyitásához az xDrip+ óraszámlapokhoz.\nHa az óraszámlapok támogatják az xDrip+-t, akkor kompatibilisnek kell lenniük ezzel az alkalmazással is.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Nyomja meg itt a Glance weboldal megnyitásához, amely támogatja az xDrip+ webszolgáltatásokat.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Nyomja meg itt az xDrip+-hoz tervezett Pebble óraszámlapok megnyitásához, amelyeknek kompatibilisnek kell lenniük ezzel az alkalmazással is.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Vízszintes pozíció</string>
     <string name="pref_lockscreen_x_pos_summary">A kép vízszintes pozíciója:\n0 a kijelző bal széle\n40 a kijelző jobb széle</string>

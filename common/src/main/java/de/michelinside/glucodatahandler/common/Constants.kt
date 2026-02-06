@@ -385,6 +385,13 @@ object Constants {
     const val SHARED_PREF_GRAPH_BITMAP_SHOW_AXIS = "graph_bitmap_show_axis"
     const val SHARED_PREF_GRAPH_BITMAP_CIRCLE_RADIUS = "graph_bitmap_circle_radius"
 
+    // Nightscout upload
+    const val SHARED_PREF_NIGHTSCOUT_UPLOAD_ENABLED = "nightscout_upload_enabled"
+    const val SHARED_PREF_NIGHTSCOUT_UPLOAD_URL = "nightscout_upload_url"
+    const val SHARED_PREF_NIGHTSCOUT_UPLOAD_SECRET = "nightscout_upload_secret"
+    const val SHARED_PREF_NIGHTSCOUT_UPLOAD_TOKEN = "nightscout_upload_token"
+    const val SHARED_PREF_NIGHTSCOUT_UPLOAD_INTERVAL = "nightscout_upload_interval"
+    const val SHARED_PREF_NIGHTSCOUT_UPLOAD_TIME = "nightscout_upload_time"
 
     // special version handling:
     const val SHARED_PREF_API_36_DISABLE_NOTIFICATION = "API_36_disable_notification"  // in API 36 notifications are grouped, so 2. and 3. should be disabled once

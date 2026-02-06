@@ -45,7 +45,7 @@ Ta innowacyjna aplikacja odbiera dane z różnych źródeł i wizualizuje je w p
   * **WAŻNA UWAGA:** GDH na Wear OS nie może działać samodzielnie. Do konfiguracji wymagana jest aplikacja na telefonie.
 
 * **Obsługa WatchDrip+:** Używaj GDH z określonymi urządzeniami Mi Band, Xiaomi Smart Band i Amazfit
-* **Zegarki Garmin, Fitbit i Pebble**
+* **Zegarki Garmin i Fitbit**
 * **Health Connect**
 
 * **Ułatwienia dostępu:** Pełna obsługa funkcji TalkBack (podziękowania dla Alexa za testy!).

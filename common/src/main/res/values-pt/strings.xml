@@ -899,7 +899,7 @@ Pode gerir estas permissões a qualquer momento nas definições da aplicação 
     <string name="pref_switch_xdrip_server_reduce_data_summary">Isto irá reduzir os dados fornecidos ao mínimo para evitar problemas de memória em alguns relógios Garmin.\nPor favor, verifique a compatibilidade com o seu mostrador.</string>
     <string name="error_port_in_use">A porta está em uso!\nPor favor, pare outro servidor web em execução nesta porta e reinicie o servidor web local.</string>
     <string name="state_active">ativo</string>
-    <string name="pref_garmin_info_summary">Não existe uma aplicação dedicada para Garmin, Fitbit ou Pebble, apenas um servidor web local, que é utilizado por mostradores de relógio com suporte para xDrip+.\nBasta procurar esses mostradores na Connect IQ Store e configurar a fonte xDrip+ para eles.\nIMPORTANTE: se também utilizar o xDrip+ ou o Juggluco, só pode ativar o servidor web local numa única aplicação, uma vez que utilizam a mesma porta (17580)!</string>
+    <string name="pref_garmin_info_summary">Não existe uma aplicação dedicada para Garmin ou Fitbit, apenas um servidor web local, que é utilizado por mostradores de relógio com suporte para xDrip+.\nBasta procurar esses mostradores na Connect IQ Store e configurar a fonte xDrip+ para eles.\nIMPORTANTE: se também utilizar o xDrip+ ou o Juggluco, só pode ativar o servidor web local numa única aplicação, uma vez que utilizam a mesma porta (17580)!</string>
     <string name="remaining">Restante</string>
     <string name="pref_switch_xdrip_open_server">Abrir servidor web</string>
     <string name="pref_switch_xdrip_open_server_summary">Tornar o servidor web aberto para outros dispositivos na rede.\nIsto pode causar problemas de segurança, por isso, ative-o apenas se precisar realmente de aceder aos dados do servidor web a partir da rede.\nOs mostradores de relógio Garmin solicitam os dados diretamente no telemóvel, pelo que não é necessário um servidor aberto!</string>
@@ -928,14 +928,12 @@ Pode gerir estas permissões a qualquer momento nas definições da aplicação 
     <string name="src_ns_summary">Seguir remotamente o serviço web Nightscout.</string>
     <string name="pref_cat_wear_os_summary">Para relógios Wear OS, por exemplo, todos os Google Pixel Watches, Samsung Galaxy Watch 4 e mais recentes, e muitos outros.</string>
     <string name="pref_cat_watchdrip_summary">Para relógios suportados pela aplicação externa WatchDrip+, como a maioria dos modelos Mi Band, Xiaomi Smart Band e Amazfit.</string>
-    <string name="pref_cat_garminpebble">Relógios Garmin, Fitbit e Pebble</string>
-    <string name="pref_cat_garminpebble_summary">Para dispositivos e aplicações que podem receber dados de glicose do serviço web do xDrip+, como Garmin, Pebble e alguns relógios Fitbit.</string>
+    <string name="pref_cat_garminpebble">Relógios Garmin e Fitbit</string>
+    <string name="pref_cat_garminpebble_summary">Para dispositivos e aplicações que podem receber dados de glicose do serviço web do xDrip+, como Garmin e alguns relógios Fitbit.</string>
     <string name="pref_garmin_watchfaces_summary">Prima aqui para abrir a loja Connect IQ para os mostradores de relógio do xDrip+.\nSe os mostradores suportarem o xDrip+, também deverão ser compatíveis com esta aplicação.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Prima aqui para abrir a página web da Glance, que suporta os serviços web do xDrip+.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Prima aqui para abrir os mostradores de relógio Pebble concebidos para o xDrip+, que também deverão ser compatíveis com esta aplicação.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Posição horizontal</string>
     <string name="pref_lockscreen_x_pos_summary">Posição horizontal da imagem:\n0 é a esquerda do ecrã\n40 é a direita do ecrã</string>

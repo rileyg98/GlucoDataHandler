@@ -13,4 +13,10 @@
         android:summary="@string/pref_transfer_to_local_apps_summary"
         app:fragment="de.michelinside.glucodatahandler.preferences.TransferBroadcastFragement"
         app:iconSpaceReserved="false" />
+    <Preference
+        android:key="transfer_nightscout"
+        android:title="@string/transfer_to_nightscout"
+        android:summary="@string/pref_transfer_to_nightscout_summary"
+        app:fragment="de.michelinside.glucodatahandler.preferences.TransferNightscoutFragment"
+        app:iconSpaceReserved="false" />
 </PreferenceScreen>

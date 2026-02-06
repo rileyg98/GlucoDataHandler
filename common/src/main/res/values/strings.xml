@@ -17,7 +17,7 @@
     <string name="menu_google_groups" translatable="false">Google Groups</string>
 
     <string name="glucodataauto_link" translatable="false">https://github.com/pachi81/GlucoDataAuto/blob/main/README.md</string>
-    <string name="help_link" translatable="false">https://github.com/pachi81/GlucoDataHandler/wiki/Sensors</string>
+    <string name="help_link" translatable="false">https://github.com/pachi81/GlucoDataHandler/wiki</string>
     <string name="update_link" translatable="false">https://github.com/pachi81/GlucoDataHandler/releases</string>
     <string name="support_link" translatable="false">https://github.com/pachi81/GlucoDataHandler/issues</string>
     <string name="gda_support_link" translatable="false">https://github.com/pachi81/GlucoDataAuto/issues</string>
@@ -516,7 +516,7 @@
     <string name="pref_cat_watchdrip">Mi Band, Smart Band and Amazfit watches</string>
     <string name="pref_cat_wear_os">Wear OS watches</string>
     <string name="pref_cat_watch">Watch</string>
-    <string name="pref_cat_garminpebble">Garmin, Fitbit and Pebble watches</string>
+    <string name="pref_cat_garminpebble">Garmin and Fitbit watches</string>
     <string name="pref_cat_watch_summary">Settings for connected smartwatches.</string>
     <string name="pref_cat_transfer_summary">Settings to transfer glucose values to other applications.</string>
     <string name="pref_cat_transfer">Transfer values</string>
@@ -968,7 +968,7 @@ You can manage these permissions at any time in the Health Connect app settings.
     <string name="pref_switch_xdrip_server_reduce_data_summary">This will reduce the provided data to a minimum to prevent memory issues on some Garmin watches.\nPlease check compatibility with you watchface.</string>
     <string name="error_port_in_use">Port is in use!\nPlease stop other web server running on this port and restart local web server again.</string>
     <string name="state_active">active</string>
-    <string name="pref_garmin_info_summary">There is no dedicated app for Garmin, Fitbit or Pebble, just a local web server, which is used by watchfaces with xDrip+ support.\nJust search for such watchfaces in Connect IQ Store and setup xDrip+ source for these watchfaces.\nIMPORTANT: if you also use xDrip+ or Juggluco, you can enable the local web server only in one app, as there are using the same port (17580)!</string>
+    <string name="pref_garmin_info_summary">There is no dedicated app for Garmin or Fitbit, just a local web server, which is used by watchfaces with xDrip+ support.\nJust search for such watchfaces in Connect IQ Store and setup xDrip+ source for these watchfaces.\nIMPORTANT: if you also use xDrip+ or Juggluco, you can enable the local web server only in one app, as there are using the same port (17580)!</string>
     <string name="remaining">Remaining</string>
     <string name="pref_switch_xdrip_open_server">Open web server</string>
     <string name="pref_switch_xdrip_open_server_summary">Make the web server open for other devices in the network.\nThis may cause security problems, so only enable it, if you really need to access the data of the web server from the network.\nThe Garmin watchfaces request data direct on the phone, so no open server is needed!</string>
@@ -997,13 +997,11 @@ You can manage these permissions at any time in the Health Connect app settings.
     <string name="src_ns_summary">Remotely follow Nightscout web service.</string>
     <string name="pref_cat_wear_os_summary">For Wear OS watches, e.g., all Google Pixel Watches, Samsung Galaxy Watch 4 and newer, and many others.</string>
     <string name="pref_cat_watchdrip_summary">For watches supported by the external WatchDrip+ app, such as most Mi Band, Xiaomi Smart Band and Amazfit models.</string>
-    <string name="pref_cat_garminpebble_summary">For devices and apps that can receive glucose data from xDrip+ web service, such as Garmin, Pebble, and some Fitbit watches.</string>
+    <string name="pref_cat_garminpebble_summary">For devices and apps that can receive glucose data from xDrip+ web service, such as Garmin and some Fitbit watches.</string>
     <string name="pref_garmin_watchfaces_summary">Press here to open Connect IQ store for xDrip+ watchfaces.\nIf the watchfaces supports xDrip+, they should also be compatible to this app.</string>
     <string name="pref_garmin_watchfaces">Garmin</string>
     <string name="pref_fitbit_watchfaces">Fitbit</string>
     <string name="pref_fitbit_watchfaces_summary">Press here to open Glance web page, which supports xDrip+ web services.</string>
-    <string name="pref_pebble_watchfaces">Pebble</string>
-    <string name="pref_pebble_watchfaces_summary">Press here to open Pebble watchfaces designed for xDrip+, which should also be compatible to this app.</string>
     <string name="gmi">GMI</string>
     <string name="pref_lockscreen_x_pos">Horizontal position</string>
     <string name="pref_lockscreen_x_pos_summary">Horizontal position of the image:\n0 is the left of the display\n40 is the right of the display</string>
@@ -1050,6 +1048,13 @@ You can manage these permissions at any time in the Health Connect app settings.
     <string name="pref_source_aidex_summary">Receives broadcasts from the AiDEX app. Requires AiDEX app version equal to or less than 1.0.17.</string>
     <string name="source_aidex" translatable="false">AiDEX</string>
 
+    <string name="transfer_values_interval_summary">Interval for sending glucose values.\nAll values recorded since the last transmission will be included.</string>
+    <string name="health_connect_settings">Open Health Connect</string>
+    <string name="health_connect_settings_summary">Manage permissions and data access for Health Connect.</string>
+    <string name="health_connect_not_supported_version">Health Connect requires at least Android 9.</string>
+    <string name="pref_transfer_to_nightscout_summary">Upload glucose values to Nightscout.</string>
+    <string name="transfer_to_nightscout">Nightscout Upload</string>
+    <string name="label_profile">Profile</string>
 </resources>
 
 
