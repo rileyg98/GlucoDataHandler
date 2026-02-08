@@ -19,7 +19,11 @@ class AidexBroadcastReceiver : NamedBroadcastReceiver() {
     override fun onReceiveData(context: Context, intent: Intent) {
         try {
             Log.d(LOG_ID, "onReceiveData called for action ${intent.action}")
+            intent.extras?.classLoader = BleMessage::class.java.classLoader
             if (intent.action == "com.microtechmd.cgms.NOTIFICATION") {
+                // Set the class loader explicitly to allow deserialization of BleMessage,
+                // which resides in the common module but is loaded by the main app's class loader.
+
                 val message = intent.getSerializableExtra("message")
                 if (message is BleMessage) {
                     if (message.operation == 1 && message.isSuccess) {
