@@ -19,11 +19,10 @@ class AidexBroadcastReceiver : NamedBroadcastReceiver() {
     override fun onReceiveData(context: Context, intent: Intent) {
         try {
             Log.d(LOG_ID, "onReceiveData called for action ${intent.action}")
-            intent.extras?.classLoader = BleMessage::class.java.classLoader
             if (intent.action == "com.microtechmd.cgms.NOTIFICATION") {
                 // Set the class loader explicitly to allow deserialization of BleMessage,
                 // which resides in the common module but is loaded by the main app's class loader.
-
+                intent.extras?.classLoader = BleMessage::class.java.classLoader
                 val message = intent.getSerializableExtra("message")
                 if (message is BleMessage) {
                     if (message.operation == 1 && message.isSuccess) {
@@ -43,6 +42,7 @@ class AidexBroadcastReceiver : NamedBroadcastReceiver() {
                             // Sensor age in minutes, to seconds, to ms, subtracted from time now.
                             extras.putLong(ReceiveData.SENSOR_START_TIME, System.currentTimeMillis() - (record.sensorAge)*60*1000)
 
+                            ReceiveData.handleIntent(context, DataSource.AIDEX, extras)
                         }
                     }
                 }

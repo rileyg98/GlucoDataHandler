@@ -1048,7 +1048,6 @@ You can manage these permissions at any time in the Health Connect app settings.
     <string name="pref_source_aidex_summary">Receives broadcasts from the AiDEX app. Requires AiDEX app version equal to or less than 1.0.17.</string>
     <string name="source_aidex" translatable="false">AiDEX</string>
 
-    <string name="transfer_values_interval_summary">Interval for sending glucose values.\nAll values recorded since the last transmission will be included.</string>
     <string name="health_connect_settings">Open Health Connect</string>
     <string name="health_connect_settings_summary">Manage permissions and data access for Health Connect.</string>
     <string name="health_connect_not_supported_version">Health Connect requires at least Android 9.</string>
