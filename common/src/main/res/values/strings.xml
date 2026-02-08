@@ -64,6 +64,7 @@
     <string name="source_ns_emulator" translatable="false">Dexcom/Eversense</string>
     <string name="source_diabox" translatable="false">DiaBox</string>
     <string name="source_libre_patched" translatable="false">Libre patched app</string>
+    <string name="source_aidex" translatable="false">AiDEX</string>
     <string name="pref_source_eversense_info" translatable="false">Eversense (ESEL)/Dexcom BYODA (xDrip+)</string>
     <string name="pref_source_dexcom_byoda_info" translatable="false">Dexcom BYODA (AAPS)</string>
     <string name="pref_source_libre_patched" translatable="false">Libre patched app</string>
@@ -1049,7 +1050,6 @@ You can manage these permissions at any time in the Health Connect app settings.
     <string name="pref_transfer_to_local_apps_summary">Sending broadcast to other local applications on this device.</string>
     <string name="source_aidex_summary">Enable AiDEX broadcast receiver. Requires AiDEX app version equal to or less than 1.0.17.</string>
     <string name="pref_source_aidex_summary">Receives broadcasts from the AiDEX app. Requires AiDEX app version equal to or less than 1.0.17.</string>
-    <string name="source_aidex" translatable="false">AiDEX</string>
 
     <string name="transfer_values_interval_summary">Interval for sending glucose values.\nAll values recorded since the last transmission will be included.</string>
     <string name="health_connect_settings">Open Health Connect</string>
