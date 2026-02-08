@@ -679,8 +679,7 @@
     <string name="pref_watchfaces_default">Стандартные</string>
     <string name="pref_watchfaces_default_summary">Большинство производителей часов уже предоставляют циферблаты, которые можно использовать с усложнением GlucoDataHandler.\nНапример, большинство циферблатов Samsung \"Info\" совместимы.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie — это приложение для создания циферблатов с облачной библиотекой.\nЧтобы найти совместимые циферблаты, найдите в библиотеке циферблаты, начинающиеся с \"GDH_\".\nПримечание. Pujie несовместимо с устройствами Wear OS 5.\nНажмите здесь, чтобы открыть приложение в Play Маркете.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie — это приложение для создания циферблатов с облачной библиотекой.\nЧтобы найти совместимые циферблаты, найдите в библиотеке циферблаты, начинающиеся с \"GDH_\".\nНажмите здесь, чтобы открыть приложение в Play Маркете.</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man создает сторонние циферблаты, специально разработанные для использования с GlucoDataHandler.\nНажмите здесь, чтобы открыть его страницу в Play Маркете.</string>
     <string name="pref_watchfaces_gdc">Циферблаты GDC</string>
     <string name="pref_watchfaces_gdc_summary">Циферблаты GDC предназначены для использования с GlucoDataHandler.\nНажмите здесь, чтобы открыть страницу в Play Маркете.</string>

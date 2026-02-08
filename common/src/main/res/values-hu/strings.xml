@@ -567,7 +567,6 @@ Az összes támogatott óra listájához és a beállítási információkért k
     <string name="pref_watchfaces_default">Alapértelmezett</string>
     <string name="pref_watchfaces_default_summary">A legtöbb okosóra gyártó már kínál számlapokat, amelyek kompatibilisek a GlucoDataHandler komplikációival.
 Például a legtöbb Samsung \"Info\" számlap kompatibilis.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
     <string name="pref_watchfaces_dmm_summary">A Diabetic Masked Man harmadik féltől származó számlapokat készít, amelyek kifejezetten a GlucoDataHandler használatára lettek tervezve.
 Kattintson ide a Play Store oldalának megnyitásához.</string>
     <string name="pref_watchfaces_gdc">GDC számlapok</string>
@@ -577,7 +576,6 @@ Kattintson ide a Play Store oldalának megnyitásához.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
     <string name="pref_watchfaces_pujie_summary">A Pujie egy alkalmazás számlapok létrehozására felhőalapú könyvtárral.
 Kompatibilis számlapok kereséséhez keressen a könyvtárban \"GDH_\"-vel kezdődő számlapokat.
-Megjegyzés: A Pujie nem kompatibilis a Wear OS 5 eszközökkel.
 Kattintson ide az alkalmazás megnyitásához a Play Store-ban.</string>
     <string name="pref_wear_notification">Okosóra: Rezgés</string>
     <string name="pref_wear_os_check_connection">Kapcsolat ellenőrzése</string>

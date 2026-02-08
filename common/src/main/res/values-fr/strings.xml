@@ -684,8 +684,7 @@
     <string name="pref_watchfaces_default">Standard</string>
     <string name="pref_watchfaces_default_summary">La plupart des fabricants de montres proposent déjà des cadrans de montre qui peuvent être utilisés avec la complication GlucoDataHandler.\nPar exemple, la plupart des cadrans de montre « Info » de Samsung sont compatibles.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie est une application de création de cadrans de montre avec une bibliothèque cloud.\nPour trouver des cadrans de montre compatibles, recherchez dans la bibliothèque les cadrans de montre commençant par « GDH_ ».\nRemarque : Pujie n’est pas compatible avec les appareils Wear OS 5.\nAppuyez ici pour ouvrir l’application dans le Play Store.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie est une application de création de cadrans de montre avec une bibliothèque cloud.\nPour trouver des cadrans de montre compatibles, recherchez dans la bibliothèque les cadrans de montre commençant par « GDH_ ».\nAppuyez ici pour ouvrir l’application dans le Play Store.</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man crée des cadrans de montre tiers spécialement conçus pour être utilisés avec GlucoDataHandler.\nAppuyez ici pour ouvrir sa page Play Store.</string>
     <string name="pref_watchfaces_gdc">Cadrans de montre GDC</string>
     <string name="pref_watchfaces_gdc_summary">Les cadrans de montre GDC sont conçus pour être utilisés avec GlucoDataHandler.\nAppuyez ici pour ouvrir la page Play Store.</string>

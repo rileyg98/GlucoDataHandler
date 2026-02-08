@@ -32,10 +32,14 @@
     <string name="playstore_gdc_watchfaces" translatable="false">https://play.google.com/store/apps/dev?id=7197840107055554214</string>
     <string name="playstore_dmm_watchfaces" translatable="false">https://play.google.com/store/apps/dev?id=6551812103351455972</string>
     <string name="playstore_pujie_watchfaces" translatable="false">https://play.google.com/store/apps/dev?id=7780011900367662392</string>
+    <string name="cx_watchfaces" translatable="false">https://beta.facer.io/u/CXWatchFaces</string>
     <string name="garmin_watchfaces" translatable="false">https://apps.garmin.com/search?keywords=xdrip</string>
     <string name="pebble_watchfaces" translatable="false">https://apps.rebble.io/en_US/search/watchfaces/1?native=false&amp;query=xdrip</string>
     <string name="glance_watchfaces" translatable="false">https://glancewatchface.com</string>
     <string name="medtrum_easy_view_url" translatable="false">https://easyview.medtrum.eu/</string>
+
+    <string name="pref_watchfaces_dmm" translatable="false">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_cx" translatable="false">Creative eXtremes</string>
 
     <string name="video_tutorial_librelinkup" translatable="false">https://youtu.be/YRs9nY4DgnA?si=v108UhnBNfQSeK2I</string>
     <string name="video_tutorial_juggluco" translatable="false">https://youtu.be/evS5rXDiciY?si=DTxlGYhYm-nNboHl</string>
@@ -748,8 +752,7 @@
     <string name="pref_watchfaces_default">Standard</string>
     <string name="pref_watchfaces_default_summary">Most watch manufacturers already provide watch faces that can be used with the GlucoDataHandler complication.\nFor example, most Samsung \"Info\" watch faces are compatible.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie is a watch face creator app with a cloud library.\nTo find compatible watch faces, search the library for watch faces starting with \"GDH_\".\nNote: Pujie is not compatible with Wear OS 5 devices.\nTap here to open the app in the Play Store.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie is a watch face creator app with a cloud library.\nTo find compatible watch faces, search the library for watch faces starting with \"GDH_\".\nTap here to open the app in the Play Store.</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man creates third-party watch faces specifically designed for use with GlucoDataHandler.\nTap here to open his Play Store page.</string>
     <string name="pref_watchfaces_gdc">GDC Watch Faces</string>
     <string name="pref_watchfaces_gdc_summary">GDC Watch Faces are designed for use with GlucoDataHandler.\nTap here to open the Play Store page.</string>
@@ -1051,6 +1054,7 @@ You can manage these permissions at any time in the Health Connect app settings.
     <string name="pref_transfer_to_nightscout_summary">Upload glucose values to Nightscout.</string>
     <string name="transfer_to_nightscout">Nightscout Upload</string>
     <string name="label_profile">Profile</string>
+    <string name="pref_watchfaces_cx_summary">Creative eXtreme watch faces also supports GlucoDataHandler complications.\nYou need to use Facer watch face app to use these watch faces.\nTap here to open Facer page for Create eXtreme watch faces.</string>
 </resources>
 
 

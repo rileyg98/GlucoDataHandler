@@ -683,8 +683,7 @@
     <string name="pref_watchfaces_default">Estándar</string>
     <string name="pref_watchfaces_default_summary">La mayoría de los fabricantes de relojes ya proporcionan watchfaces que se pueden utilizar con la complicación GlucoDataHandler.\nPor ejemplo, la mayoría de las watchfaces \"Info\" de Samsung son compatibles.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie es una aplicación de creación de watchfaces con una biblioteca en la nube.\nPara encontrar watchfaces compatibles, busca en la biblioteca watchfaces que comiencen con \"GDH_\".\nNota: Pujie no es compatible con dispositivos Wear OS 5.\nPulsa aquí para abrir la aplicación en Play Store.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie es una aplicación de creación de watchfaces con una biblioteca en la nube.\nPara encontrar watchfaces compatibles, busca en la biblioteca watchfaces que comiencen con \"GDH_\".\nPulsa aquí para abrir la aplicación en Play Store.</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man crea watchfaces de terceros diseñadas específicamente para su uso con GlucoDataHandler.\nPulsa aquí para abrir su página de Play Store.</string>
     <string name="pref_watchfaces_gdc">GDC Watch Faces</string>
     <string name="pref_watchfaces_gdc_summary">GDC Watch Faces están diseñadas para su uso con GlucoDataHandler.\nPulsa aquí para abrir la página de Play Store.</string>

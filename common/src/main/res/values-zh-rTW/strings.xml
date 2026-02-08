@@ -682,8 +682,7 @@
     <string name="pref_watchfaces_default">標準</string>
     <string name="pref_watchfaces_default_summary">多數手錶製造商都提供可以與 GlucoDataHandler 小工具一起使用的錶面\n如大多數 Samsung 的「資訊」錶面都可相容</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie 是一個有雲端資料庫的錶面設計程式\n若要尋找相容錶面，請在資料庫中搜尋以「GDH_」開頭的錶面\n注意: Pujie 與 Wear OS 5 裝置不相容\n按這裡開啟 Play 商店的程式</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie 是一個有雲端資料庫的錶面設計程式\n若要尋找相容錶面，請在資料庫中搜尋以「GDH_」開頭的錶面\n按這裡開啟 Play 商店的程式</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man 專門設計可與 GlucoDataHandler 搭配使用的第三方錶面\n按這裡開啟他的 Play 商店頁面</string>
     <string name="pref_watchfaces_gdc">GDC 錶面</string>
     <string name="pref_watchfaces_gdc_summary">GDC 錶面專門設計與 GlucoDataHandler 搭配使用\n按這裡開啟 Play 商店頁面</string>
