@@ -687,8 +687,7 @@
     <string name="pref_watchfaces_default">Standardowe</string>
     <string name="pref_watchfaces_default_summary">Większość producentów zegarków dostarcza już tarcze zegarków, które mogą być używane z komplikacją z GlucoDataHandler. Na przykład większość tarcz zegarków Samsung \"Info\"\ daje taką możliwość.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie to aplikacja do tworzenia tarcz zegarka z biblioteką chmurową.\nAby znaleźć kompatybilne tarcze zegarka, wyszukaj w bibliotece tarcze zegarka zaczynające się od \"GDH_\".\nUwaga: Aplikacja Pujie nie jest kompatybilna z urządzeniami z systemem Wear OS 5.\nStuknij tutaj, aby otworzyć aplikację w Sklepie Play.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie to aplikacja do tworzenia tarcz zegarka z biblioteką chmurową.\nAby znaleźć kompatybilne tarcze zegarka, wyszukaj w bibliotece tarcze zegarka zaczynające się od \"GDH_\".\nStuknij tutaj, aby otworzyć aplikację w Sklepie Play.</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man tworzy oddzielne tarcze zegarków zaprojektowane specjalnie do użytku z GlucoDataHandler.\nStuknij tutaj, aby otworzyć jego stronę w Sklepie Play.</string>
     <string name="pref_watchfaces_gdc">Tarcze zegarka GDC</string>
     <string name="pref_watchfaces_gdc_summary">Tarcze zegarka GDC są przeznaczone do użytku z aplikacją GlucoDataHandler.\nStuknij tutaj, aby otworzyć stronę Sklepu Play.</string>

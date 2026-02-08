@@ -687,8 +687,7 @@
     <string name="pref_watchfaces_default">Štandardné</string>
     <string name="pref_watchfaces_default_summary">Väčšina výrobcov hodiniek už poskytuje ciferníky, ktoré sa dajú použiť s komplikáciou GlucoDataHandler.\nNapríklad väčšina ciferníkov Samsung \„Info\“ je kompatibilná.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie je aplikácia na tvorbu ciferníkov s cloudovou knižnicou. Ak chcete nájsť kompatibilné ciferníky, vyhľadajte v knižnici ciferníky začínajúce na \„GDH_\“.\nPoznámka: Pujie nie je kompatibilná so zariadeniami Wear OS 5.\nŤuknutím sem otvoríte aplikáciu v obchode Play Store.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie je aplikácia na tvorbu ciferníkov s cloudovou knižnicou. Ak chcete nájsť kompatibilné ciferníky, vyhľadajte v knižnici ciferníky začínajúce na \„GDH_\“.\nŤuknutím sem otvoríte aplikáciu v obchode Play Store.</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man vytvára ciferníky tretích strán, ktoré sú špeciálne navrhnuté pre použitie s aplikáciou GlucoDataHandler.\nŤuknutím sem otvoríte jeho stránku v obchode Play Store.</string>
     <string name="pref_watchfaces_gdc">GDC ciferníky</string>
     <string name="pref_watchfaces_gdc_summary">Ciferníky GDC sú určené na použitie s aplikáciou GlucoDataHandler.\nŤuknutím sem otvoríte obchod Play Store.</string>

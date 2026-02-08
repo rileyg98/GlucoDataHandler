@@ -150,6 +150,7 @@ object Constants {
     const val SHARED_PREF_WATCHFACES_PUJIE = "pref_watchfaces_pujie"
     const val SHARED_PREF_WATCHFACES_DMM = "pref_watchfaces_dmm"
     const val SHARED_PREF_WATCHFACES_GDC = "pref_watchfaces_gdc"
+    const val SHARED_PREF_WATCHFACES_CX = "pref_watchfaces_cx"
 
 
     // internal app preferences (not changed by settings) -> use separate tag for not trigger onChanged events

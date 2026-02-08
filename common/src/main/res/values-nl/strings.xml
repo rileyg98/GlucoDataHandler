@@ -687,8 +687,7 @@
     <string name="pref_watchfaces_default">Standaard</string>
     <string name="pref_watchfaces_default_summary">De meeste horlogefabrikanten bieden al wijzerplaten die kunnen worden gebruikt met de GlucoDataHandler complicatie.\nDe meeste Samsung \"Info\"-wijzerplaten zijn bijvoorbeeld compatibel.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie is een app voor het maken van wijzerplaten met een cloudbibliotheek.\nOm compatibele wijzerplaten te vinden, zoekt u in de bibliotheek naar wijzerplaten die beginnen met \"GDH_\".\nOpmerking: Pujie is niet compatibel met Wear OS 5 apparaten.\nTik hier om de app in de Play Store te openen.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie is een app voor het maken van wijzerplaten met een cloudbibliotheek.\nOm compatibele wijzerplaten te vinden, zoekt u in de bibliotheek naar wijzerplaten die beginnen met \"GDH_\".\nTik hier om de app in de Play Store te openen.</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man maakt wijzerplaten van derden die speciaal zijn ontworpen voor gebruik met GlucoDataHandler.\nTik hier om zijn Play Store-pagina te openen.</string>
     <string name="pref_watchfaces_gdc">GDC Watch Faces</string>
     <string name="pref_watchfaces_gdc_summary">GDC Watch Faces zijn ontworpen voor gebruik met GlucoDataHandler.\nTik hier om de Play Store-pagina te openen.</string>

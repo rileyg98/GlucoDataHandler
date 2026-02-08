@@ -674,8 +674,7 @@
     <string name="pref_watchfaces_default">Standard</string>
     <string name="pref_watchfaces_default_summary">La maggior parte dei produttori di orologi fornisce già quadranti che possono essere utilizzati con la complicazione GlucoDataHandler.\nAd esempio, la maggior parte dei quadranti \"Info\" di Samsung sono compatibili.</string>
     <string name="pref_watchfaces_pujie">Pujie</string>
-    <string name="pref_watchfaces_pujie_summary">Pujie è un\'app per la creazione di quadranti con una libreria cloud.\nPer trovare quadranti compatibili, cerca nella libreria i quadranti che iniziano con \"GDH_\".\nNota: Pujie non è compatibile con i dispositivi Wear OS 5.\nTocca qui per aprire l\'app nel Play Store.</string>
-    <string name="pref_watchfaces_dmm">Diabetic Masked Man</string>
+    <string name="pref_watchfaces_pujie_summary">Pujie è un\'app per la creazione di quadranti con una libreria cloud.\nPer trovare quadranti compatibili, cerca nella libreria i quadranti che iniziano con \"GDH_\".\nTocca qui per aprire l\'app nel Play Store.</string>
     <string name="pref_watchfaces_dmm_summary">Diabetic Masked Man crea quadranti di terze parti progettati specificamente per l\'uso con GlucoDataHandler.\nTocca qui per aprire la sua pagina del Play Store.</string>
     <string name="pref_watchfaces_gdc">Quadranti GDC</string>
     <string name="pref_watchfaces_gdc_summary">I quadranti GDC sono progettati per l\'uso con GlucoDataHandler.\nTocca qui per aprire la pagina del Play Store.</string>
