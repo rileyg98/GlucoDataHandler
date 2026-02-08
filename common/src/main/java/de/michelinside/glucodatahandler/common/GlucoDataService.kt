@@ -22,6 +22,7 @@ import de.michelinside.glucodatahandler.common.notifier.DataSource
 import de.michelinside.glucodatahandler.common.notifier.InternalNotifier
 import de.michelinside.glucodatahandler.common.notifier.NotifySource
 import de.michelinside.glucodatahandler.common.receiver.AAPSReceiver
+import de.michelinside.glucodatahandler.common.receiver.AidexBroadcastReceiver
 import de.michelinside.glucodatahandler.common.receiver.BatteryReceiver
 import de.michelinside.glucodatahandler.common.receiver.BroadcastServiceAPI
 import de.michelinside.glucodatahandler.common.receiver.DexcomBroadcastReceiver
@@ -122,14 +123,14 @@ abstract class GlucoDataService(source: AppSource) : WearableListenerService(), 
                         true//sharedPref.getBoolean(Constants.SHARED_PREF_FOREGROUND_SERVICE, true)
                     )*/
                     //if (foreground) {
-                        context.startService(serviceIntent)
+                    context.startService(serviceIntent)
                     /*} else {
                         Log.i(LOG_ID, "start foreground service")
                         context.applicationContext.startForegroundService(serviceIntent)
                         stopTrigger()
                     }*/
                     isRunning = true
-                    if(!foreground && startServiceReceiver != null) {
+                    if (!foreground && startServiceReceiver != null) {
                         // trigger also foreground alarm
                         triggerStartService(context, startServiceReceiver!!)
                     }
@@ -286,6 +287,7 @@ abstract class GlucoDataService(source: AppSource) : WearableListenerService(), 
         private var nsEmulatorReceiver: NsEmulatorReceiver? = null
         private var diaboxReceiver: DiaboxReceiver? = null
         private var notificationReceiver: NotificationReceiver? = null
+        private var aidexReceiver: AidexBroadcastReceiver? = null
         private val registeredReceivers = mutableSetOf<String>()
 
         @SuppressLint("UnspecifiedRegisterReceiverFlag")
@@ -421,6 +423,21 @@ abstract class GlucoDataService(source: AppSource) : WearableListenerService(), 
                         librePatchedReceiver = null
                     }
                 }
+                if (key.isNullOrEmpty() || key == Constants.SHARED_PREF_SOURCE_AIDEX_ENABLED) {
+                    if (sharedPref.getBoolean(Constants.SHARED_PREF_SOURCE_AIDEX_ENABLED, true)) {
+                        if (aidexReceiver == null) {
+                            aidexReceiver = AidexBroadcastReceiver()
+                            val filter = IntentFilter()
+                            filter.addAction(Intents.AIDEX_BROADCAST_ACTION)
+                            if (!registerReceiver(context, aidexReceiver!!, filter))
+                                aidexReceiver = null
+                        }
+                    } else if (aidexReceiver != null) {
+                        unregisterReceiver(context, aidexReceiver)
+                        aidexReceiver = null
+                    }
+
+                }
 
                 if (key.isNullOrEmpty() || key == Constants.SHARED_PREF_SOURCE_NOTIFICATION_ENABLED) {
                     updateNotificationReceiver(sharedPref, context)
@@ -499,6 +516,10 @@ abstract class GlucoDataService(source: AppSource) : WearableListenerService(), 
                 if(notificationReceiver != null) {
                     unregisterReceiver(context, notificationReceiver)
                     notificationReceiver = null
+                }
+                if (aidexReceiver != null) {
+                    unregisterReceiver(context, aidexReceiver)
+                    aidexReceiver = null
                 }
             } catch (exc: Exception) {
                 Log.e(LOG_ID, "unregisterSourceReceiver exception: " + exc.toString())
@@ -855,6 +876,7 @@ abstract class GlucoDataService(source: AppSource) : WearableListenerService(), 
                 Constants.SHARED_PREF_SOURCE_BYODA_ENABLED,
                 Constants.SHARED_PREF_SOURCE_EVERSENSE_ENABLED,
                 Constants.SHARED_PREF_SOURCE_DIABOX_ENABLED,
+                Constants.SHARED_PREF_SOURCE_AIDEX_ENABLED,
                 Constants.SHARED_PREF_SOURCE_NOTIFICATION_ENABLED -> {
                     updateSourceReceiver(this, key)
                     shareSettings = true

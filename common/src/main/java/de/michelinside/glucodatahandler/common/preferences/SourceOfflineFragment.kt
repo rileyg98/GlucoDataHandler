@@ -206,3 +206,4 @@ class SourceEversense: SourceOfflineFragmentBase(R.xml.source_eversense) {
 class SourceDiabox: SourceOfflineFragmentBase(R.xml.source_diabox)
 class SourceLibrePatched: SourceOfflineFragmentBase(R.xml.source_libre_patched)
 class SourceDexcomByodaAaps: SourceOfflineFragmentBase(R.xml.source_dexcom_byoda_aaps)
+class SourceAidex: SourceOfflineFragmentBase(R.xml.source_aidex)
